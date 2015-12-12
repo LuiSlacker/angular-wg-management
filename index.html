@@ -3,16 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>WG-Management</title>
+    <!--Angular Dependencies-->
     <script src="js/angular/angular_1.5.0-rc0.js" defer></script>
     <script src="js/angular/angular-ui-router.min.js" defer></script>
     <script src="js/angular/ui-load.js" defer></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css" defer/>
 
+    <!--bootstrap Dependencies-->
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+    <!--custom Dependencies-->
     <script src="app/app.js" defer></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" defer/>
+    <link rel="stylesheet" href="css/sticky-footer.css" defer/>
 </head>
 <body ng-app="app">
-    WG APP
+    <nav class="navbar navbar-default" style="margin-bottom:0px!important">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" ui-sref="dashboard">WG-Verwaltung</a>
+            </div>
 
-    <div ui-view class="container"></div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" ui-sref="people">Meine WG</a></li>
+                    <li><a href="#" ui-sref="directives">Mein Profil</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hilfe <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Hilfethemen</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Über</li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Deployment Strategy</a></li>
+                            <li><a href="#">Check out Github Repository</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" ui-sref="directives">Logout</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div ui-view></div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">©2015 Katia, Ludwig @ HTW Berlin</p>
+        </div>
+    </footer>
 </body>
 </html>
