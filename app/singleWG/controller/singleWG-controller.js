@@ -6,11 +6,19 @@ app.controller('singleWGController', function($stateParams){
 
     vm.showNewItem = false;
     vm.wgName = $stateParams.wgName;
+    vm.wgMembersHeadline = "WG Members";
+
     vm.shoppinglists= [
         {name: "Feuerzangenbowle", creator:"Ludwig"},
         {name: "WG-Essen",creator:"Kati"},
         {name: "Tatort Abend", creator:"Kommissar Borowski"},
         {name: "Musik Session", creator:"Romano"}
+    ];
+    vm.wgMembers= [
+        {name: "Ludwig"},
+        {name: "Kati"},
+        {name: "Kommissar Borowski"},
+        {name: "Romano"}
     ];
 
     vm.newItem = function(){
