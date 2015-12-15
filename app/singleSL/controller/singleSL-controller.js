@@ -8,11 +8,12 @@ app.controller('singleSLController', ['$stateParams', function($stateParams){
     vm.wgName = $stateParams.wgName;
     vm.shoppinglistName = $stateParams.shoppinglistName;
 
-        vm.items= [
-        {name: "Bier", quantity:"2 Sixpacks", addedBy:"Luis"},
-        {name: "trockener Weißwein", quantity:"3 Flaschen", addedBy:"Luis"},
-        {name: "Sekt", quantity:"2 Flaschen", addedBy:"Luis"},
-        {name: "Pfeffi", quantity:"1 Flachmann", addedBy:"Luis"}
+    vm.items= [
+        {name: "Bier", quantity:"2 Sixpacks", addedBy:"Luis", purchased: false, boughtBy:""},
+        {name: "trockener Weißwein", quantity:"3 Flaschen", addedBy:"Luis", purchased: true, boughtBy:"Luis"},
+        {name: "Sekt", quantity:"2 Flaschen", addedBy:"Luis", purchased: false, boughtBy:""},
+        {name: "Chips", quantity:"2x", addedBy:"Luis", purchased: false, boughtBy:""},
+        {name: "Pfeffi", quantity:"1 Flachmann", addedBy:"Luis", purchased: true, boughtBy:"Kati"}
     ];
 
     vm.enableAddingNewItem = function(){
@@ -32,5 +33,9 @@ app.controller('singleSLController', ['$stateParams', function($stateParams){
     vm.cancelAddingNewItem = function(){
         vm.showNewItem = false;
         vm.newItem = {};
+    };
+
+    vm.purchaseItem = function(index){
+        vm.items[index].purchased = true;
     };
 }]);

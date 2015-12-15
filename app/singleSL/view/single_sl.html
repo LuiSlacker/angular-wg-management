@@ -5,58 +5,94 @@
         {{singleSLCtrl.shoppinglistName}}
     </h3>
 
-    <div class="panel panel-primary">
-        <div class="panel-heading"><strong>Einkaufsliste</strong></div>
-        <div class="panel-body">
-            <table class="table table-striped table-hover">
-                <thead>
-                <th>Posten</th>
-                <th>Anzahl</th>
-                <th>Hinzugefügt von</th>
-                <th></th>
-                <th></th>
-                </thead>
-                <tbody>
-                <tr ng-repeat="item in singleSLCtrl.items">
-                    <td>{{item.name}}</td>
-                    <td>{{item.quantity}}</td>
-                    <td>{{item.addedBy}}</td>
-                    <td>
-                        <button class="btn btn-active"><i class="glyphicon glyphicon-edit"></i> Bearbeiten</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" ng-click="utils.deleteItemFromArray(singleSLCtrl.items, $index)">
-                            <i
-                                    class="glyphicon glyphicon-trash"></i> Löschen
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <button ng-hide="singleSLCtrl.showNewItem" class="btn btn-primary addButton"
-                    ng-click="singleSLCtrl.enableAddingNewItem()"><i
-                    class="glyphicon glyphicon-plus"></i> Neuen Posten hinzufügen
-            </button>
-            <div ng-show="singleSLCtrl.showNewItem">
-                <h4>Neuen Posten anlegen</h4>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><strong>Einkaufsliste</strong></div>
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <th>Posten</th>
+                        <th>Anzahl</th>
+                        <th>Hinzugefügt von</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in singleSLCtrl.items" ng-if="!item.purchased">
+                            <td>{{item.name}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.addedBy}}</td>
+                            <td>
+                                <button class="btn btn-default"><i
+                                        class="glyphicon glyphicon-edit"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger"
+                                        ng-click="utils.deleteItemFromArray(singleSLCtrl.items, $index)">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-success"
+                                        ng-click="singleSLCtrl.purchaseItem($index)" title="blub">
+                                    <i class="glyphicon glyphicon-usd"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button ng-hide="singleSLCtrl.showNewItem" class="btn btn-primary addButton"
+                            ng-click="singleSLCtrl.enableAddingNewItem()"><i
+                            class="glyphicon glyphicon-plus"></i> Neuen Posten hinzufügen
+                    </button>
+                    <div ng-show="singleSLCtrl.showNewItem">
+                        <h4>Neuen Posten anlegen</h4>
 
-                <div class="input-group">
-                    <span class="input-group-addon">Name</span>
-                    <input type="text" class="form-control" placeholder="Neuer Posten"
-                           ng-model="singleSLCtrl.newItem.name">
+                        <div class="input-group">
+                            <span class="input-group-addon">Name</span>
+                            <input type="text" class="form-control" placeholder="Neuer Posten"
+                                   ng-model="singleSLCtrl.newItem.name">
 
-                    <span class="input-group-addon">Anzahl</span>
-                    <input type="text" class="form-control" placeholder="4 Flaschen / 300 g"
-                           ng-model="singleSLCtrl.newItem.quantity">
+                            <span class="input-group-addon">Anzahl</span>
+                            <input type="text" class="form-control" placeholder="4 Flaschen / 300 g"
+                                   ng-model="singleSLCtrl.newItem.quantity">
 
-                    <span class="input-group-addon">Hinzugefügt von</span>
-                    <input type="text" class="form-control" placeholder="Luis" ng-model="singleSLCtrl.newItem.addedBy">
-                </div>
-                <div class="confirmButton">
-                    <button class="btn btn-primary" ng-click="singleSLCtrl.addNewItem()">Posten hinzufügen</button>
-                    <button class="btn" ng-click="singleSLCtrl.cancelAddingNewItem()">Abbrechen</button>
+                            <span class="input-group-addon">Hinzugefügt von</span>
+                            <input type="text" class="form-control" placeholder="Luis"
+                                   ng-model="singleSLCtrl.newItem.addedBy">
+                        </div>
+                        <div class="confirmButton">
+                            <button class="btn btn-primary" ng-click="singleSLCtrl.addNewItem()">Posten hinzufügen
+                            </button>
+                            <button class="btn" ng-click="singleSLCtrl.cancelAddingNewItem()">Abbrechen</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel panel-success">
+                <div class="panel-heading"><strong>Bereits gekaufte Posten</strong></div>
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <th>Posten</th>
+                        <th>Anzahl</th>
+                        <th>Hinzugefügt von</th>
+                        <th>gekauft von</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in singleSLCtrl.items" ng-if="item.purchased">
+                            <td>{{item.name}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.addedBy}}</td>
+                            <td>{{item.boughtBy}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
         </div>
     </div>
 </div>
