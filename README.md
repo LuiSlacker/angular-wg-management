@@ -1,5 +1,9 @@
 # angular-wg-management
 
+# Story backlog
+Here is the link to the planning file of this project (only read, no edit rights): https://onedrive.live.com/redir?resid=4ED4ECF6DFA903F2!3486&authkey=!ABVZtu6f6e34mIE&ithint=file%2cxlsx
+
+# Setup
 In order to set up this development version of the app you need https://nodejs.org installed at your system.
 After setting up node you have to install the dependencies, run
 ```
