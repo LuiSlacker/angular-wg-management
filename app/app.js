@@ -40,6 +40,17 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                         }]
                     }
                 })
+                .state('shoppinglist', {
+                    url: '/shoppinglist/:shoppinglistName&:wgName',
+                    templateUrl: 'app/singleSL/view/single_sl.html',
+                    resolve: {
+                        deps: ['uiLoad', function (uiLoad) {
+                            return uiLoad.load(
+                                'app/singleSL/controller/singleSL-controller.js'
+                            );
+                        }]
+                    }
+                })
         }])
 
    .run(function($rootScope, utils){

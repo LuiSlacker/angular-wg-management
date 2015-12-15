@@ -10,8 +10,6 @@ app.controller('allWGsController', function(){
         {name: "The Flying FHainers",street:"Boxhagener-Straße", city:"Berlin"},
         {name: "Simon-Dach-Buddies", city:"Berlin"},
         {name: "Simon-Dach-Buddies", city:"Berlin"},
-        {name: "Simon-Dach-Buddies", city:"Berlin"},
-        {name: "Simon-Dach-Buddies", city:"Berlin"},
         {name: "Simon-Dach-Buddies", city:"Berlin"}
     ];
 
