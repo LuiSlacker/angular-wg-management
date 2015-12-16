@@ -51,6 +51,18 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                         }]
                     }
                 })
+
+                .state('profile', {
+                    url: '/profile',
+                    templateUrl: 'app/profile/view/profile.html',
+                    resolve: {
+                        deps: ['uiLoad', function (uiLoad) {
+                            return uiLoad.load(
+                                'app/profile/controller/profile-controller.js'
+                            );
+                        }]
+                    }
+                })
         }])
 
    .run(function($rootScope, utils){
