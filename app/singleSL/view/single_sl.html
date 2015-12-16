@@ -25,19 +25,20 @@
                             <td>{{item.quantity}}</td>
                             <td>{{item.addedBy}}</td>
                             <td>
-                                <button class="btn btn-default"><i
-                                        class="glyphicon glyphicon-edit"></i>
+                                <button class="btn btn-default" title="Posten bearbeiten">
+                                    <i class="glyphicon glyphicon-edit"></i>
                                 </button>
                             </td>
                             <td>
                                 <button class="btn btn-danger"
-                                        ng-click="utils.deleteItemFromArray(singleSLCtrl.items, $index)">
+                                        ng-click="utils.deleteItemFromArray(singleSLCtrl.items, $index)"
+                                        title="Posten löschen">
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>
                             </td>
                             <td>
                                 <button class="btn btn-success"
-                                        ng-click="singleSLCtrl.purchaseItem($index)" title="blub">
+                                        ng-click="singleSLCtrl.purchaseItem($index)" title="Posten kaufen">
                                     <i class="glyphicon glyphicon-usd"></i>
                                 </button>
                             </td>
@@ -93,6 +94,6 @@
                         </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
