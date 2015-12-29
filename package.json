@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/LuiSlacker/angular-wg-management#readme",
   "dependencies": {
+    "body-parser": "~1.13.2",
     "bower": "^1.7.1",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "mongoose": "^4.3.4"
   }
 }

@@ -8,12 +8,14 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
     .config([
         '$urlRouterProvider',
         '$stateProvider',
-        '$controllerProvider', function ($urlRouterProvider,
-                                         $stateProvider,
-                                         $controllerProvider) {
+        '$controllerProvider',
+        '$provide', function ($urlRouterProvider,
+                              $stateProvider,
+                              $controllerProvider,
+                              $provide) {
 
-            //$controllerProvider.allowGlobals();
             app.controller = $controllerProvider.register;
+            app.factory = $provide.factory;
 
             $urlRouterProvider.otherwise('/wgs');
 
@@ -23,10 +25,14 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                     templateUrl: 'app/allWGs/view/all_wgs.html',
                     resolve: {
                         deps: ['uiLoad', function (uiLoad) {
-                            return uiLoad.load(
-                                'app/allWGs/controller/allWGs-controller.js'
-                            );
+                            return uiLoad.load([
+                                'app/allWGs/controller/allWGs-controller.js',
+                                'app/allWGs/service/allWGs-service.js'
+                            ]);
                         }]
+                        /*postPromise: ['allWGsService', function(allWGsService){
+                            return allWGsService.getAllWGs();
+                        }]*/
                     }
                 })
                 .state('wg', {
