@@ -11,5 +11,11 @@ app.factory('allWGsService', ['$http', '$log', function($http, $log) {
        });
     };
 
+    o.create = function(newWG){
+        return $http.post('/wgs', newWG).success(function(data){
+            o.wgs.push(data);
+        })
+    };
+
     return o;
 }]);

@@ -13,7 +13,7 @@ app.controller('allWGsController', ['allWGsService', function(allWGsService){
     };
 
     vm.addNewWG = function(){
-        vm.wgs.push({
+        allWGsService.create({
             name: vm.newWG.name,
             street: vm.newWG.street,
             city: vm.newWG.city
@@ -21,6 +21,7 @@ app.controller('allWGsController', ['allWGsService', function(allWGsService){
         vm.showNewItem = false;
         vm.newWG = {};
     };
+
 
     vm.cancelAddingNewWG = function(){
         vm.showNewItem = false;

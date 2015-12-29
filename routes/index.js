@@ -12,4 +12,12 @@ router.get('/wgs', function(req, res, next){
     });
 });
 
+router.post('/wgs', function(req, res, next){
+    var wg = new WG(req.body);
+    wg.save(function(err, wg){
+        if (err) return next(err);
+        res.json(wg);
+    })
+});
+
 module.exports = router;
