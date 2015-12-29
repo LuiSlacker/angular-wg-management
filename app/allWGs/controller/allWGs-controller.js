@@ -28,4 +28,10 @@ app.controller('allWGsController', ['allWGsService', function(allWGsService){
         vm.newWG = {};
     };
 
+    vm.deleteWG = function(id){
+        allWGsService.delete(id).then(
+            allWGsService.getAllWGs()
+        );
+        //utils.deleteItemFromArray(allWGsCtrl.wgs, $index)
+    }
 }]);

@@ -20,4 +20,13 @@ router.post('/wgs', function(req, res, next){
     })
 });
 
+router.delete('/wgs/:wg', function(req, res, next){
+    console.log(req.params.wg);
+    WG.remove({"_id": req.params.wg}, function(err){
+        if (err) return next(err);
+        res.sendStatus(204);
+    });
+
+});
+
 module.exports = router;
