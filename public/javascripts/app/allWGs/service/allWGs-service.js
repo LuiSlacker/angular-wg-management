@@ -21,7 +21,7 @@ app.factory('allWGsService', ['$http', '$log', function($http, $log) {
         })
     };
 
-    o.delete= function(wgId){
+    o.delete = function(id){
         return $http.delete('/wgs/' + id);
     };
 
