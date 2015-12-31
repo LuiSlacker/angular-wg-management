@@ -1,19 +1,20 @@
 /**
  * Created by petulantslacker on 14/12/15.
  */
-app.controller('singleWGController', function($stateParams){
+app.controller('singleWGController', ['$stateParams',
+                                      'singleWGService',
+                                      'allWGsService', function($stateParams, singleWGService, allWGsService){
     var vm = this;
-
     vm.showNewItem = false;
-    vm.wgName = $stateParams.wgName;
+    vm.wgID = $stateParams.wgID;
     vm.wgMembersHeadline = "WG Members";
+    allWGsService.getSingleWG(vm.wgID).success(function(data){
+        vm.wgName = data.name;
+    });
 
-    vm.shoppinglists= [
-        {name: "Feuerzangenbowle", creator:"Ludwig"},
-        {name: "WG-Essen",creator:"Kati"},
-        {name: "Tatort Abend", creator:"Kommissar Borowski"},
-        {name: "Musik Session", creator:"Romano"}
-    ];
+    vm.shoppinglists = singleWGService.shoppinglists;
+    singleWGService.getAllShoppinglists(vm.wgID);
+
     vm.wgMembers= [
         {name: "Ludwig"},
         {name: "Kati"},
@@ -25,17 +26,15 @@ app.controller('singleWGController', function($stateParams){
         vm.showNewItem = true;
     };
 
-    vm.addNewWG = function(){
-        vm.shoppinglists.push({
-            name: vm.newShoppinglist.name,
-            creator: vm.newShoppinglist.creator
-        });
+    vm.addNewShoppinglist = function(){
+        vm.newShoppinglist.wg = vm.wgID;
+        singleWGService.createShoppinglist(vm.wgID, vm.newShoppinglist);
         vm.showNewItem = false;
         vm.newShoppinglist = {};
     };
 
-    vm.cancelAddingNewWG = function(){
+    vm.cancelAddingNewShoppinglist = function(){
         vm.showNewItem = false;
-        vm.newWG = {};
+        vm.newShoppinglist = {};
     };
-});
+}]);

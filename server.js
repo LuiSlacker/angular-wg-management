@@ -7,6 +7,7 @@ var path = require('path');
 
 // MongoDB models  =================================================
 require('./models/WGs');
+require('./models/Shoppinglists');
 
 // connect to MongoDB ==============================================
 mongoose.connect('mongodb://localhost/wg-management');
