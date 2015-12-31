@@ -25,7 +25,6 @@ app.controller('singleWGController', ['$stateParams',
         vm.wgName = data.name;
     });
 
-    vm.shoppinglists = singleWGService.shoppinglists;
     singleWGService.getAllShoppinglists(vm.wgID);
 
     vm.newItem = function(){
