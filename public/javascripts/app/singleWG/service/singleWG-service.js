@@ -17,8 +17,8 @@ app.factory('singleWGService', ['$http', '$log', function($http, $log) {
         })
     };
 
-    o.deleteShoppinglist = function(id){
-        return $http.delete('/wgs/' + id);
+    o.deleteShoppinglist = function(wgId, shoppinglistId){
+        return $http.delete('/wgs/'+ wgId + '/shoppinglists/' + shoppinglistId);
     };
 
     return o;

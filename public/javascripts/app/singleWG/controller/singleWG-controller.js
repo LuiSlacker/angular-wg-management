@@ -3,7 +3,9 @@
  */
 app.controller('singleWGController', ['$stateParams',
                                       'singleWGService',
-                                      'allWGsService', function($stateParams, singleWGService, allWGsService){
+                                      'allWGsService', function($stateParams,
+                                                                singleWGService,
+                                                                allWGsService){
     var vm = this;
     vm.showNewItem = false;
     vm.wgID = $stateParams.wgID;
@@ -37,4 +39,10 @@ app.controller('singleWGController', ['$stateParams',
         vm.showNewItem = false;
         vm.newShoppinglist = {};
     };
+
+    vm.deleteShoppinglist = function(shoppinglistId){
+        singleWGService.deleteShoppinglist(vm.wgID, shoppinglistId).success(function(){
+            singleWGService.getAllShoppinglists(vm.wgID);
+        });
+    }
 }]);
