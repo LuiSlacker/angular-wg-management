@@ -1,6 +1,5 @@
 app.factory('allWGsService', ['$http', '$log', function($http, $log) {
 
-
     var o = {
         wgs: []
     };

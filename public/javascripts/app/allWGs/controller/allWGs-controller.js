@@ -2,12 +2,14 @@
  * Created by petulantslacker on 12/12/15.
  */
 app.controller('allWGsController', ['allWGsService', function(allWGsService){
-    var vm = this;
 
+    // config ===============================================================
+    var vm = this;
     vm.showNewItem = false;
     vm.wgs = allWGsService.wgs;
     allWGsService.getAllWGs();
 
+    // controller functions ==================================================
     vm.newItem = function(){
         vm.showNewItem = true;
     };
@@ -22,7 +24,6 @@ app.controller('allWGsController', ['allWGsService', function(allWGsService){
         vm.newWG = {};
     };
 
-
     vm.cancelAddingNewWG = function(){
         vm.showNewItem = false;
         vm.newWG = {};
@@ -32,6 +33,5 @@ app.controller('allWGsController', ['allWGsService', function(allWGsService){
         allWGsService.delete(id).then(
             allWGsService.getAllWGs()
         );
-        //utils.deleteItemFromArray(allWGsCtrl.wgs, $index)
     }
 }]);

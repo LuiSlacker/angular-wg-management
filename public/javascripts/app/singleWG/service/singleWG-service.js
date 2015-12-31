@@ -1,6 +1,5 @@
 app.factory('singleWGService', ['$http', '$log', function($http, $log) {
 
-
     var o = {
         shoppinglists: []
     };

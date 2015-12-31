@@ -6,23 +6,27 @@ app.controller('singleWGController', ['$stateParams',
                                       'allWGsService', function($stateParams,
                                                                 singleWGService,
                                                                 allWGsService){
+
+    // config ====================================================================
     var vm = this;
     vm.showNewItem = false;
     vm.wgID = $stateParams.wgID;
     vm.wgMembersHeadline = "WG Members";
-    allWGsService.getSingleWG(vm.wgID).success(function(data){
-        vm.wgName = data.name;
-    });
-
     vm.shoppinglists = singleWGService.shoppinglists;
-    singleWGService.getAllShoppinglists(vm.wgID);
-
     vm.wgMembers= [
         {name: "Ludwig"},
         {name: "Kati"},
         {name: "Kommissar Borowski"},
         {name: "Romano"}
     ];
+
+    // controller functions ======================================================
+    allWGsService.getSingleWG(vm.wgID).success(function(data){
+        vm.wgName = data.name;
+    });
+
+    vm.shoppinglists = singleWGService.shoppinglists;
+    singleWGService.getAllShoppinglists(vm.wgID);
 
     vm.newItem = function(){
         vm.showNewItem = true;
