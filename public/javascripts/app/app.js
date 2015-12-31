@@ -36,13 +36,14 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                     }
                 })
                 .state('wg', {
-                    url: '/wg/:wgName',
+                    url: '/wg/:wgID',
                     templateUrl: 'public/javascripts/app/singleWG/view/single_wg.html',
                     resolve: {
                         deps: ['uiLoad', function (uiLoad) {
-                            return uiLoad.load(
-                                'public/javascripts/app/singleWG/controller/singleWG-controller.js'
-                            );
+                            return uiLoad.load([
+                                'public/javascripts/app/singleWG/controller/singleWG-controller.js',
+                                'public/javascripts/app/singleWG/service/singleWG-service.js',
+                                'public/javascripts/app/allWGs/service/allWGs-service.js']);
                         }]
                     }
                 })

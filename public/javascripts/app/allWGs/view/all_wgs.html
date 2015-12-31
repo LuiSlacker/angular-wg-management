@@ -13,7 +13,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="wg in allWGsCtrl.wgs">
-                    <td><a ui-sref="wg({wgName:'{{wg.name}}'})">{{wg.name}}</a></td>
+                    <td><a ui-sref="wg({wgID:'{{wg._id}}'})">{{wg.name}}</a></td>
                     <td>{{wg.street}}</td>
                     <td>{{wg.city}}</td>
                     <td>

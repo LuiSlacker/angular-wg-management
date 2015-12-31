@@ -11,6 +11,10 @@ app.factory('allWGsService', ['$http', '$log', function($http, $log) {
        });
     };
 
+    o.getSingleWG = function(wgID){
+      return $http.get('/wgs/' + wgID);
+    };
+
     o.create = function(newWG){
         return $http.post('/wgs', newWG).success(function(data){
             o.wgs.push(data);

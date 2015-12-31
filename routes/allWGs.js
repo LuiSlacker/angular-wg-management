@@ -85,7 +85,7 @@ router.post('/:wg/shoppinglists', jsonParser, function(req, res, next){
         req.wg.shoppinglists.push(newShoppinglist);
         req.wg.save(function(err, wg){
             if (err) return next(err);
-            res.json(newShoppinglist.id);
+            res.json(newShoppinglist);
         })
     });
 });
