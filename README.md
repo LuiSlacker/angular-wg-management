@@ -18,8 +18,9 @@ in a console within the main directory and all dependencies declared in package.
 
 You need MongoDB running at your system. Head over to https://www.mongodb.org/ to get started.
 
+- - - -
 With this set up just type
 ```
-node server.js
+npm start
 ```
 and the node server will be listening on localhost:3000
