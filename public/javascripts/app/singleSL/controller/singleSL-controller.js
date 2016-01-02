@@ -22,7 +22,6 @@ app.controller('singleSLController', ['$stateParams',
             vm.wg = data;
         });
 
-
         vm.enableAddingNewItem = function(){
             vm.showNewItem = true;
         };
@@ -41,4 +40,10 @@ app.controller('singleSLController', ['$stateParams',
         vm.purchaseItem = function(index){
             vm.items[index].purchased = true;
         };
+
+        vm.deleteItem = function(itemID){
+            singleSLService.deleteItem(vm.wgID, vm.shoppinglistID, itemID).success(function(){
+                singleSLService.getAllItems(vm.wgID, vm.shoppinglistID);
+            });
+        }
 }]);

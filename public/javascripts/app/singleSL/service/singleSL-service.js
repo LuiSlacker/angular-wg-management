@@ -15,5 +15,9 @@ app.factory('singleSLService', ['$http', function($http){
       });
     };
 
+    o.deleteItem = function(wgID, shoppinglistId, itemID){
+      return $http.delete('/wgs/' + wgID + '/shoppinglists/' + shoppinglistId + '/items/' + itemID)
+    };
+
     return o;
 }]);

@@ -43,4 +43,11 @@ router.post('/', jsonParser, function(req, res, next){
     });
 });
 
+router.delete('/:itemID', function(req, res, next){
+    Item.remove({"_id":req.params.itemID}, function(err){
+        if (err) return next(err);
+        res.sendStatus(204);
+    })
+});
+
 module.exports = router;
