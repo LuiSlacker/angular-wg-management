@@ -3,9 +3,11 @@
  */
 app.controller('singleSLController', ['$stateParams',
                                       'singleSLService',
-                                      'singleWGService', function($stateParams,
+                                      'singleWGService',
+                                      'allWGsService', function($stateParams,
                                                                   singleSLService,
-                                                                  singleWGService){
+                                                                  singleWGService,
+                                                                  allWGsService){
         var vm = this;
         vm.wgID = $stateParams.wgID;
         vm.shoppinglistID = $stateParams.shoppinglistID;
@@ -14,6 +16,9 @@ app.controller('singleSLController', ['$stateParams',
         singleSLService.getAllItems(vm.wgID, vm.shoppinglistID);
 
         singleWGService.getSingleShoppinglist(vm.wgID,vm.shoppinglistID).success(function(data){
+            vm.shoppinglist = data;
+        });
+        allWGsService.getSingleWG(vm.wgID).success(function(data){
             vm.wg = data;
         });
 
