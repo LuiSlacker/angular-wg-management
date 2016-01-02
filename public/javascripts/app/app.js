@@ -54,7 +54,8 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                         deps: ['uiLoad', function (uiLoad) {
                             return uiLoad.load([
                                 'public/javascripts/app/singleSL/controller/singleSL-controller.js',
-                                'public/javascripts/app/singleSL/service/singleSL-service.js']);
+                                'public/javascripts/app/singleSL/service/singleSL-service.js',
+                                'public/javascripts/app/singleWG/service/singleWG-service.js']);
                         }]
                     }
                 })
