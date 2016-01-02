@@ -5,9 +5,10 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var mongoose = require('mongoose');
 
-// MongoDB models  =================================================
+// MongoDB model  =================================================
+require('../models/WGs');
 var WG = mongoose.model('WG');
-var Shoppinglist = mongoose.model('Shoppinglist');
+//var Shoppinglist = mongoose.model('Shoppinglist');
 
 // WG Routing Parameter ============================================
 router.param('wg', function(req, res, next, id){
@@ -53,6 +54,6 @@ router.delete('/:wg', function(req, res, next){
 
 // Shoppinglist Routes  ==============================================
 var shoppinglistRoutes = require('./shoppinglists');
-router.use('/:wg', shoppinglistRoutes);
+router.use('/:wg/shoppinglists', shoppinglistRoutes);
 
 module.exports = router;

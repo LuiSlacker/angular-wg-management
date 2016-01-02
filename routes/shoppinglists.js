@@ -1,11 +1,15 @@
+// modules  ========================================================
 var express = require('express'),
     router = express.Router({mergeParams: true}),
-    bodyParser = require('body-parser');
-    jsonParser = bodyParser.json();
+    bodyParser = require('body-parser'),
+    jsonParser = bodyParser.json(),
     mongoose = require('mongoose');
-    Shoppinglist = mongoose.model('Shoppinglist');
 
-// Shoppinglist Routing Parameter  ===================================
+// MongoDB model  ==================================================
+require('../models/Shoppinglists');
+var Shoppinglist = mongoose.model('Shoppinglist');
+
+// Shoppinglist Routing Parameter  ==================================
 router.param('shoppinglist', function(req, res, next, id){
     Shoppinglist.findById(id, function(err, shoppinglist){
         if (err) {
@@ -20,17 +24,17 @@ router.param('shoppinglist', function(req, res, next, id){
 });
 
 // Shoppinglist Routes  ==============================================
-router.get('/shoppinglists', function(req, res){
+router.get('/', function(req, res){
     req.wg.populate('shoppinglists', function(err, wg){
         res.json(wg.shoppinglists);
     });
 });
 
-router.get('/shoppinglists/:shoppinglist', function(req, res, next){
+router.get('/:shoppinglist', function(req, res, next){
     res.json(req.shoppinglist);
 });
 
-router.post('/shoppinglists', jsonParser, function(req, res, next){
+router.post('/', jsonParser, function(req, res, next){
     var newShoppinglist = new Shoppinglist(req.body);
     newShoppinglist.wg = req.params.wg;
     newShoppinglist.save(function(err, newShoppinglist){
@@ -43,11 +47,15 @@ router.post('/shoppinglists', jsonParser, function(req, res, next){
     });
 });
 
-router.delete('/shoppinglists/:shoppinglist', function(req, res, next){
+router.delete('/:shoppinglist', function(req, res, next){
     Shoppinglist.remove({"_id": req.params.shoppinglist}, function(err){
         if (err) next(err);
         res.sendStatus(204);
     });
 });
+
+// Item Routes  ======================================================
+var itemRoutes = require('./items');
+router.use('/:shoppinglist/items', itemRoutes);
 
 module.exports = router;

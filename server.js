@@ -5,10 +5,6 @@ var app = express();
 var mongoose = require('mongoose');
 var path = require('path');
 
-// MongoDB models  =================================================
-require('./models/WGs');
-require('./models/Shoppinglists');
-
 // connect to MongoDB ==============================================
 mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/wg-management', function(err){
     if (err) console.error(err);
