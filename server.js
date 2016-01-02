@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/wg-management',
 });
 
 // Routing =========================================================
-var wgs = require('./routes/allWGs');
+var wgs = require('./routes/wgs');
 app.use('/wgs', wgs);
 
 // Server ==========================================================
