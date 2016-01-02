@@ -10,6 +10,10 @@ app.factory('singleWGService', ['$http', '$log', function($http, $log) {
        });
     };
 
+    o.getSingleShoppinglist = function(wgId, shoppinglistId){
+      return $http.get('/wgs/'+ wgId + '/shoppinglists/'+ shoppinglistId);
+    };
+
     o.createShoppinglist = function(wgId, newShoppinglist){
         return $http.post('/wgs/'+ wgId + '/shoppinglists', newShoppinglist).success(function(data){
             o.shoppinglists.push(data);

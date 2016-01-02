@@ -48,13 +48,15 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                     }
                 })
                 .state('shoppinglist', {
-                    url: '/shoppinglist/:shoppinglistName&:wgName',
+                    url: '/shoppinglist/:shoppinglistID&:wgID',
                     templateUrl: 'public/javascripts/app/singleSL/view/single_sl.html',
                     resolve: {
                         deps: ['uiLoad', function (uiLoad) {
-                            return uiLoad.load(
-                                'public/javascripts/app/singleSL/controller/singleSL-controller.js'
-                            );
+                            return uiLoad.load([
+                                'public/javascripts/app/singleSL/controller/singleSL-controller.js',
+                                'public/javascripts/app/singleSL/service/singleSL-service.js',
+                                'public/javascripts/app/singleWG/service/singleWG-service.js',
+                                'public/javascripts/app/allWGs/service/allWGs-service.js']);
                         }]
                     }
                 })
