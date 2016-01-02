@@ -17,17 +17,17 @@ router.param('item', function(req, res, next, id){
         } else if (!item){
             next(new Error('Failed to load Item'));
         } else {
-            req.shoppinglist = item;
+            req.item = item;
             next();
         }
     });
 });
 
 router.get('/', function(req, res){
-   Item.find(function(err, items){
-       if (err) next(err);
-       res.json(items);
-   });
+   req.shoppinglist.populate('items', function(err, shoppinglist){
+        if (err) return next(err);
+       res.json(shoppinglist.items);
+    });
 });
 
 router.post('/', jsonParser, function(req, res, next){
