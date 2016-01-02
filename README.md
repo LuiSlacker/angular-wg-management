@@ -24,3 +24,6 @@ With this set up just type
 npm start
 ```
 and the node server will be listening on localhost:3000
+
+###HEROKU DEPLOYMENT
+The App itself has been deployed to heroku.com amd can be reached at https://wg-manager.herokuapp.com
