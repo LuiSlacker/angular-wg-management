@@ -19,6 +19,7 @@
                         <thead>
                         <th>Einkaufsliste</th>
                         <th>Initiator</th>
+                        <th>Erstellt am</th>
                         <th></th>
                         <th></th>
                         </thead>
@@ -26,6 +27,7 @@
                         <tr ng-repeat="sl in singleWGCtrl.shoppinglists">
                             <td><a ui-sref="shoppinglist({shoppinglistName: '{{sl.name}}', wgName: '{{singleWGCtrl.wgName}}'})">{{sl.name}}</a></td>
                             <td>{{sl.creator}}</td>
+                            <td>{{sl.date | date: 'MM/dd/yyyy @ h:mma'}}</td>
                             <td>
                                 <button class="btn btn-active"><i class="glyphicon glyphicon-edit"></i> Edit</button>
                             </td>
