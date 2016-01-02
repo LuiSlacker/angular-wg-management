@@ -3,7 +3,7 @@
 ## Story backlog
 <a href="https://docs.google.com/spreadsheets/d/1akzPQ1ONSz0wO_qEoTRSs7Y1tHsdBeTwDnIx6Nd8OVs/edit?usp=sharing" target="_blank">Here</a> is the link to the planning file of this project.
 
-## Setup
+## Local Setup
 
 ###Node
 In order to set up this development version of the app you need <a href="https://nodejs.org" target="_blank">nodejs</a> installed at your system.
@@ -25,5 +25,5 @@ npm start
 ```
 and the node server will be listening on localhost:3000
 
-###HEROKU DEPLOYMENT
-The App itself has been deployed to heroku.com and can be reached <a href="https://wg-manager.herokuapp.com" target="_bank">here<a/>
+##HEROKU DEPLOYMENT
+The App itself has been deployed to heroku.com and can be reached <a href="https://wg-manager.herokuapp.com" target="_bank">here<a/>.
