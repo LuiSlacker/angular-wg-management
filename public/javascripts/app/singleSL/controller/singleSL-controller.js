@@ -27,6 +27,7 @@ app.controller('singleSLController', ['$stateParams',
         };
 
         vm.addNewItem = function(){
+            vm.newItem.shoppinglist = vm.shoppinglistID;
             singleSLService.createItem(vm.wgID, vm.shoppinglistID, vm.newItem);
             vm.showNewItem = false;
             vm.newItem = {};
