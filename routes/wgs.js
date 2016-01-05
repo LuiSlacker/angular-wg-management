@@ -8,7 +8,6 @@ var mongoose = require('mongoose');
 // MongoDB model  =================================================
 require('../models/WGs');
 var WG = mongoose.model('WG');
-//var Shoppinglist = mongoose.model('Shoppinglist');
 
 // WG Routing Parameter ============================================
 router.param('wg', function(req, res, next, id){
