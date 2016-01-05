@@ -43,6 +43,17 @@ router.get('/', function(req, res){
     });
 });
 
+router.put('/:item', jsonParser, function(req, res, next){
+    console.log(req.item);
+    req.item.name = req.body.name || req.item.name;
+    req.item.purchased = req.body.purchased || req.item.purchased;
+    req.item.save(function(err, item){
+        if (err) return next(err);
+        res.json(item);
+    });
+
+});
+
 router.delete('/:itemID', function(req, res, next){
     Item.remove({"_id":req.params.itemID}, function(err){
         if (err) return next(err);
