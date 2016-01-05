@@ -23,13 +23,6 @@ router.param('item', function(req, res, next, id){
     });
 });
 
-router.get('/', function(req, res){
-   req.shoppinglist.populate('items', function(err, shoppinglist){
-        if (err) return next(err);
-       res.json(shoppinglist.items);
-    });
-});
-
 router.post('/', jsonParser, function(req, res, next){
     var item = new Item(req.body);
     item.shoppinglist = req.params.shoppinglist;
@@ -40,6 +33,13 @@ router.post('/', jsonParser, function(req, res, next){
             if (err) return next(err);
             res.json(item)
         });
+    });
+});
+
+router.get('/', function(req, res){
+    req.shoppinglist.populate('items', function(err, shoppinglist){
+        if (err) return next(err);
+        res.json(shoppinglist.items);
     });
 });
 
