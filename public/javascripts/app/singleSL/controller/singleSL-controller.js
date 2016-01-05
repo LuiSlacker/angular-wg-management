@@ -38,8 +38,10 @@ app.controller('singleSLController', ['$stateParams',
             vm.newItem = {};
         };
 
-        vm.purchaseItem = function(index){
-            vm.items[index].purchased = true;
+        vm.purchaseItem = function(itemID){
+            singleSLService.updateItem(vm.wgID, vm.shoppinglistID, itemID, {"purchased": "true"}).success(function(data){
+                singleSLService.getAllItems(vm.wgID, vm.shoppinglistID);
+            });
         };
 
         vm.deleteItem = function(itemID){

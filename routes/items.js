@@ -23,13 +23,6 @@ router.param('item', function(req, res, next, id){
     });
 });
 
-router.get('/', function(req, res){
-   req.shoppinglist.populate('items', function(err, shoppinglist){
-        if (err) return next(err);
-       res.json(shoppinglist.items);
-    });
-});
-
 router.post('/', jsonParser, function(req, res, next){
     var item = new Item(req.body);
     item.shoppinglist = req.params.shoppinglist;
@@ -41,6 +34,23 @@ router.post('/', jsonParser, function(req, res, next){
             res.json(item)
         });
     });
+});
+
+router.get('/', function(req, res){
+    req.shoppinglist.populate('items', function(err, shoppinglist){
+        if (err) return next(err);
+        res.json(shoppinglist.items);
+    });
+});
+
+router.put('/:item', jsonParser, function(req, res, next){
+    req.item.name = req.body.name || req.item.name;
+    req.item.purchased = req.body.purchased || req.item.purchased;
+    req.item.save(function(err, item){
+        if (err) return next(err);
+        res.json(item);
+    });
+
 });
 
 router.delete('/:itemID', function(req, res, next){
