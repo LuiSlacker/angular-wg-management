@@ -44,7 +44,6 @@ router.get('/', function(req, res){
 });
 
 router.put('/:item', jsonParser, function(req, res, next){
-    console.log(req.item);
     req.item.name = req.body.name || req.item.name;
     req.item.purchased = req.body.purchased || req.item.purchased;
     req.item.save(function(err, item){
