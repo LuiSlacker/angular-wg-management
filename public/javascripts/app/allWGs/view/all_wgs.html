@@ -13,16 +13,30 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="wg in allWGsCtrl.wgs">
-                    <td><a ui-sref="app.wg({wgID:'{{wg._id}}'})">{{wg.name}}</a></td>
-                    <td>{{wg.street}}</td>
-                    <td>{{wg.city}}</td>
                     <td>
-                        <button class="btn btn-active"><i class="glyphicon glyphicon-edit"></i> Bearbeiten</button>
+                        <span editable-text="wg.name" e-name="name" e-form="rowform" e-required>
+                          <a ui-sref="app.wg({wgID:'{{wg._id}}'})">{{wg.name}}</a>
+                        </span>
                     </td>
                     <td>
-                        <button class="btn btn-danger" ng-click="allWGsCtrl.deleteWG(wg._id)"><i
-                                class="glyphicon glyphicon-trash"></i> Löschen
-                        </button>
+                        <span editable-text="wg.street" e-name="street" e-form="rowform" e-required>{{wg.street}}</span>
+                    </td>
+                    <td><span editable-text="wg.city" e-name="city" e-form="rowform" e-required>{{wg.city}}</span></td>
+                    <td>
+                        <!-- form -->
+                        <form editable-form name="rowform" onbeforesave="saveWG($data, wg._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == wg._id">
+                          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                            save
+                          </button>
+                          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                            cancel
+                          </button>
+                        </form>
+                
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-edit"></i> Bearbeiten</button>
+                            <button class="btn btn-danger" ng-click="allWGsCtrl.deleteWG(wg._id)"><i class="glyphicon glyphicon-trash"></i> Löschen</button>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
