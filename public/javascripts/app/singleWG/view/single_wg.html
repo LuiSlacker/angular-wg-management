@@ -25,7 +25,7 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="sl in singleWGCtrl.shoppinglists">
-                            <td><a ui-sref="shoppinglist({shoppinglistID: '{{sl._id}}', wgID: '{{singleWGCtrl.wgID}}'})">{{sl.name}}</a></td>
+                            <td><a ui-sref="app.shoppinglist({shoppinglistID: '{{sl._id}}', wgID: '{{singleWGCtrl.wgID}}'})">{{sl.name}}</a></td>
                             <td>{{sl.creator}}</td>
                             <td>{{sl.date | date: 'MM/dd/yyyy @ h:mma'}}</td>
                             <td>
