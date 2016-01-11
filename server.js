@@ -5,7 +5,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     //path = require('path'),
     passport = require('passport'),
-    session = require('express-session'),
+    expressSession = require('express-session'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser');
 
@@ -20,15 +20,12 @@ require('./config/passport')(passport);
 
 // Config ==========================================================
 app.use(cookieParser());
-var formparser = bodyParser.urlencoded({
+app.use(bodyParser.urlencoded({
     extended: true
-});
+}));
 var router = express.Router();
 var jsonParser = bodyParser.json();
-app.use(session({
-                secret: 'wg-manager-secret',
-                resave: false,
-                saveUninitialized: false}));
+app.use(expressSession({secret: 'wg-manager-secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
