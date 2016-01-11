@@ -1,5 +1,4 @@
 var LocalStrategy = require('passport-local').Strategy,
-    FacebookStrategy = require('passport-facebook').Strategy,
     mongoose = require('mongoose');
 
 var configAuth = require('./auth');
