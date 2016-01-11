@@ -2,6 +2,7 @@ app.controller('loginController',['authService','$location', function(authServic
     var vm = this;
 
     vm.user = {};
+    vm.newUser = {};
     vm.login = function(){
         console.log(vm.user);
         authService.login(vm.user).then(function(){
@@ -9,8 +10,8 @@ app.controller('loginController',['authService','$location', function(authServic
         });
     };
     vm.signup = function(){
-        console.log(vm.user);
-        authService.signup(vm.user).then(function(){
+        console.log(vm.newUser);
+        authService.signup(vm.newUser).then(function(){
             $location.path('app/wgs');
         }).catch(function(e){
             console.log(e);
