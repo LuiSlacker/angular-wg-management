@@ -4,10 +4,12 @@
 app.controller('singleSLController', ['$stateParams',
                                       'singleSLService',
                                       'singleWGService',
-                                      'allWGsService', function($stateParams,
-                                                                  singleSLService,
-                                                                  singleWGService,
-                                                                  allWGsService){
+                                      'allWGsService',
+                                      'authService', function($stateParams,
+                                                              singleSLService,
+                                                              singleWGService,
+                                                              allWGsService,
+                                                              authService){
         var vm = this;
         vm.wgID = $stateParams.wgID;
         vm.shoppinglistID = $stateParams.shoppinglistID;
@@ -28,6 +30,7 @@ app.controller('singleSLController', ['$stateParams',
 
         vm.addNewItem = function(){
             vm.newItem.shoppinglist = vm.shoppinglistID;
+            vm.newItem.addedby = authService.user.username;
             singleSLService.createItem(vm.wgID, vm.shoppinglistID, vm.newItem);
             vm.showNewItem = false;
             vm.newItem = {};
@@ -39,7 +42,8 @@ app.controller('singleSLController', ['$stateParams',
         };
 
         vm.purchaseItem = function(itemID){
-            singleSLService.updateItem(vm.wgID, vm.shoppinglistID, itemID, {"purchased": "true"}).success(function(data){
+            singleSLService.updateItem(vm.wgID, vm.shoppinglistID, itemID, {"purchased":   "true",
+                                                                            "purchasedby": authService.user.username}).success(function(data){
                 singleSLService.getAllItems(vm.wgID, vm.shoppinglistID);
             });
         };

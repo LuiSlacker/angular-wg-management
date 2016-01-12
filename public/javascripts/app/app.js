@@ -39,6 +39,7 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                 .state('app.wgs', {
                     url: '/wgs',
                     templateUrl: 'public/javascripts/app/allWGs/view/all_wgs.html',
+                    access: {restricted:true},
                     resolve: {
                         deps: ['uiLoad', function (uiLoad) {
                             return uiLoad.load([
@@ -54,6 +55,7 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                 .state('app.wg', {
                     url: '/wg/:wgID',
                     templateUrl: 'public/javascripts/app/singleWG/view/single_wg.html',
+                    access: {restricted:true},
                     resolve: {
                         deps: ['uiLoad', function (uiLoad) {
                             return uiLoad.load([
@@ -66,6 +68,7 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                 .state('app.shoppinglist', {
                     url: '/shoppinglist/:shoppinglistID&:wgID',
                     templateUrl: 'public/javascripts/app/singleSL/view/single_sl.html',
+                    access: {restricted:true},
                     resolve: {
                         deps: ['uiLoad', function (uiLoad) {
                             return uiLoad.load([

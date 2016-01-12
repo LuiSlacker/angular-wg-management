@@ -11,7 +11,8 @@ var userSchema = new mongoose.Schema({
         token        : String,
         email        : String,
         name         : String
-    }
+    },
+    wgs: [{type: mongoose.Schema.Types.ObjectId, ref:'WG'}]
 });
 
 userSchema.methods.generateHash = function(password){
