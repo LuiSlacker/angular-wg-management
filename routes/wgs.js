@@ -45,6 +45,16 @@ router.post('/', jsonParser, function(req, res, next){
     })
 });
 
+router.put('/:wg', jsonParser, function(req, res, next){
+    req.wg.name = req.body.name || req.wg.name;
+    req.wg.street = req.body.street || req.wg.street;
+    req.wg.city = req.body.city || req.wg.city;
+    req.wg.save(function(err, wg){
+        if (err) return next(err);
+        res.json(wg);
+    });
+});
+
 router.delete('/:wg', function(req, res, next){
     WG.remove({"_id": req.wg}, function(err){
         if (err) return next(err);
