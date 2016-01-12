@@ -91,6 +91,10 @@ var app = angular.module("app", ['ui.router', 'ui.load'])
                         }]
                     }
                 })
+                .state('app.impressum', {
+                    url: '/impressum',
+                    templateUrl: 'public/javascripts/app/impressum/view/impressum.html',
+                })
         }])
 
    .run(['$rootScope', '$location', 'authService', 'utils',function($rootScope, $location, authService, utils){
