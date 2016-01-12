@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var app = angular.module("app", ['ui.router', 'ui.load'])
+var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
 
     .config([
         '$urlRouterProvider',

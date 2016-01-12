@@ -24,6 +24,12 @@ app.factory('allWGsService', ['$http', '$log', function($http, $log) {
         return $http.delete('/wgs/' + id);
     };
 
+    o.edit = function(id, data) {
+     return $http.post('/wgs/' + id).success(function(data){
+            o.wgs.push(data);
+        })
+  };
+
     return o;
 }]);
 
