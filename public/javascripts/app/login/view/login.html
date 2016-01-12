@@ -26,9 +26,15 @@
                 <label for="Password">Password</label>
 
                 <div class="bar"></div>
+
             </div>
             <div class="button-container">
-                <button ng-click="loginCtrl.login()"><span>Go</span></button>
+                <!--<div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    Incorrect USERNAME or PASSWORD
+                </div>-->
+                <button ng-click="loginCtrl.login()"><span>Login</span></button>
             </div>
             <!--<div class="footer"><a href="#">Forgot your password?</a></div>-->
         </form>
@@ -58,7 +64,7 @@
                 <div class="bar"></div>
             </div>-->
             <div class="button-container">
-                <button ng-click="loginCtrl.signup()"><span>Next</span></button>
+                <button ng-click="loginCtrl.signup()"><span>Signup</span></button>
             </div>
         </form>
     </div>
