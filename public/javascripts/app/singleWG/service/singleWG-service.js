@@ -20,6 +20,10 @@ app.factory('singleWGService', ['$http', '$log', function($http, $log) {
         })
     };
 
+    o.updateShoppinglist = function(wgID, shoppinglistId, shoppinglist){
+        return $http.put('/wgs/' + wgID + '/shoppinglists/' + shoppinglistId, shoppinglist);
+    };
+
     o.deleteShoppinglist = function(wgId, shoppinglistId){
         return $http.delete('/wgs/'+ wgId + '/shoppinglists/' + shoppinglistId);
     };

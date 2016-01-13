@@ -35,15 +35,9 @@ app.controller('allWGsController', ['allWGsService', function(allWGsService){
         );
     }
 
-
-    vm.updateWG = function(wgID){
-            allWGsService.update(wgID, {
-                    "name": vm.name,
-                    "street": vm.street,
-                    "city": vm.city
-                }
-            ).success(function(data){
-                allWGsService.getAllWGs();
-            });
-        };
+    vm.updateWG = function(wgID, data){
+        allWGsService.update(wgID, data).success(function(data){
+            allWGsService.getAllWGs();
+        });
+    };
 }]);

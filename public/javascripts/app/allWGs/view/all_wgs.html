@@ -14,18 +14,18 @@
                 <tbody>
                 <tr ng-repeat="wg in allWGsCtrl.wgs">
                     <td>
-                        <span editable-text="wg.name" e-name="name" e-form="rowform" e-required>
+                        <span editable-text="wg.name" e-name="wg.name" e-form="rowform" e-required>
                           <a ui-sref="app.wg({wgID:'{{wg._id}}'})">{{wg.name}}</a>
                         </span>
                     </td>
                     <td>
-                        <span editable-text="wg.street" e-name="street" e-form="rowform" e-required>{{wg.street}}</span>
+                        <span editable-text="wg.street" e-name="wg.street" e-form="rowform" e-required ng-model="allWGsCtrl.wg.name">{{wg.street}}</span>
                     </td>
-                    <td><span editable-text="wg.city" e-name="city" e-form="rowform" e-required>{{wg.city}}</span></td>
+                    <td><span editable-text="wg.city" e-name="wg.city" e-form="rowform" e-required>{{wg.city}}</span></td>
                     <td>
                         <!-- form -->
-                        <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == wg._id">
-                          <button type="submit" ng-click="allWGsCtrl.updateWG(wg._id)" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                        <form editable-form name="rowform" onbeforesave="allWGsCtrl.updateWG(wg._id, $data)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == wg._id">
+                          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                             Speichern
                           </button>
                           <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">

@@ -47,6 +47,14 @@ router.post('/', jsonParser, function(req, res, next){
     });
 });
 
+router.put('/:shoppinglist', jsonParser, function(req, res, next){
+    req.shoppinglist.name = req.body.name || req.shoppinglist.name;
+    req.shoppinglist.save(function(err, shoppinglist){
+        if (err) return next(err);
+        res.json(shoppinglist);
+    });
+});
+
 router.delete('/:shoppinglist', function(req, res, next){
     Shoppinglist.remove({"_id": req.params.shoppinglist}, function(err){
         if (err) next(err);

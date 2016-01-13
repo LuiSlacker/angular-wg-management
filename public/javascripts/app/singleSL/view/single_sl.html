@@ -26,8 +26,8 @@
                             <td><span editable-text="item.addedby" e-name="addedby" e-form="rowform" e-required>{{item.addedby}}</span></td>
                             <td>
                                 <!-- form -->
-                                <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == item._id">
-                                  <button type="submit" ng-click="singleSLCtrl.updateItem(item._id)" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == item._id" onbeforesave="singleSLCtrl.updateItem(item._id, $data)">
+                                  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                                     Speichern
                                   </button>
                                   <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
