@@ -48,7 +48,7 @@ app.controller('singleWGController', ['$stateParams',
 
     vm.updateShoppinglist = function(shoppinglistID){
         singleWGService.updateShoppinglist(vm.wgID, vm.shoppinglistID, 
-            {"name": vm.name;
+            {"name": vm.name,
              "date": vm.date
             }
         ).success(function(data){
