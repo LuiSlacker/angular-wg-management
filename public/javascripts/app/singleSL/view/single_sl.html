@@ -21,26 +21,25 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="item in singleSLCtrl.items" ng-if="!item.purchased">
-                            <td>{{item.name}}</td>
-                            <td>{{item.quantity}}</td>
-                            <td>{{item.addedby}}</td>
+                            <td><span editable-text="item.name" e-name="name" e-form="rowform" e-required>{{item.name}}</span></td>
+                            <td><span editable-text="item.quantity" e-name="quantity" e-form="rowform" e-required>{{item.quantity}}</span></td>
+                            <td><span editable-text="item.addedby" e-name="addedby" e-form="rowform" e-required>{{item.addedby}}</span></td>
                             <td>
-                                <button class="btn btn-default" title="Posten bearbeiten">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger"
-                                        ng-click="singleSLCtrl.deleteItem(item._id)"
-                                        title="Posten löschen">
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <button class="btn btn-success"
-                                        ng-click="singleSLCtrl.purchaseItem(item._id)" title="Posten kaufen">
-                                    <i class="glyphicon glyphicon-usd"></i>
-                                </button>
+                                <!-- form -->
+                                <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == item._id">
+                                  <button type="submit" ng-click="singleSLCtrl.updateItem(item._id)" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                    Speichern
+                                  </button>
+                                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                    Abbrechen
+                                  </button>
+                                </form>
+                        
+                                <div class="buttons" ng-show="!rowform.$visible">
+                                    <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-edit" title="Posten bearbeiten"></i> Bearbeiten</button>
+                                    <button class="btn btn-danger" ng-click="singleSLCtrl.deleteItem(item._id)" title="Posten löschen"><i class="glyphicon glyphicon-trash"></i> Löschen</button>
+                                    <button class="btn btn-success" ng-click="singleSLCtrl.purchaseItem(item._id)" title="Posten kaufen"><i class="glyphicon glyphicon-usd"></i></button>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
