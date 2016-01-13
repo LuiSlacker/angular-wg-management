@@ -38,9 +38,9 @@ app.controller('allWGsController', ['allWGsService', function(allWGsService){
 
     vm.updateWG = function(wgID){
             allWGsService.update(wgID, {
-                    name: vm.name,
-                    street: vm.street,
-                    city: vm.city
+                    "name": vm.name,
+                    "street": vm.street,
+                    "city": vm.city
                 }
             ).success(function(data){
                 allWGsService.getAllWGs();
