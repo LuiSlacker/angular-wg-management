@@ -1,6 +1,6 @@
 <div ng-controller="singleSLController as singleSLCtrl">
     <h3>
-        <a ui-sref="wg({wgID:'{{singleSLCtrl.wgID}}'})">{{singleSLCtrl.wg.name}}</a>
+        <a ui-sref="app.wg({wgID:'{{singleSLCtrl.wgID}}'})">{{singleSLCtrl.wg.name}}</a>
         <i class="glyphicon glyphicon-triangle-right"></i>
         {{singleSLCtrl.shoppinglist.name}}
     </h3>
@@ -23,7 +23,7 @@
                         <tr ng-repeat="item in singleSLCtrl.items" ng-if="!item.purchased">
                             <td>{{item.name}}</td>
                             <td>{{item.quantity}}</td>
-                            <td>{{item.addedBy}}</td>
+                            <td>{{item.addedby}}</td>
                             <td>
                                 <button class="btn btn-default" title="Posten bearbeiten">
                                     <i class="glyphicon glyphicon-edit"></i>
@@ -89,8 +89,8 @@
                         <tr ng-repeat="item in singleSLCtrl.items" ng-if="item.purchased">
                             <td>{{item.name}}</td>
                             <td>{{item.quantity}}</td>
-                            <td>{{item.addedBy}}</td>
-                            <td>{{item.boughtBy}}</td>
+                            <td>{{item.addedby}}</td>
+                            <td>{{item.purchasedby}}</td>
                         </tr>
                         </tbody>
                     </table>

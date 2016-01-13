@@ -25,8 +25,8 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="sl in singleWGCtrl.shoppinglists">
-                            <td><a ui-sref="shoppinglist({shoppinglistID: '{{sl._id}}', wgID: '{{singleWGCtrl.wgID}}'})">{{sl.name}}</a></td>
-                            <td>{{sl.creator}}</td>
+                            <td><a ui-sref="app.shoppinglist({shoppinglistID: '{{sl._id}}', wgID: '{{singleWGCtrl.wgID}}'})">{{sl.name}}</a></td>
+                            <td>{{sl.initiator}}</td>
                             <td>{{sl.date | date: 'MM/dd/yyyy @ h:mma'}}</td>
                             <td>
                                 <button class="btn btn-active"><i class="glyphicon glyphicon-edit"></i> Edit</button>
@@ -51,10 +51,6 @@
                             <span class="input-group-addon">WG-Name</span>
                             <input type="text" class="form-control" placeholder="Neue Liste"
                                    ng-model="singleWGCtrl.newShoppinglist.name">
-
-                            <span class="input-group-addon">Initiator</span>
-                            <input type="text" class="form-control" placeholder="Luis"
-                                   ng-model="singleWGCtrl.newShoppinglist.creator">
                         </div>
                         <div class="confirmButton">
                             <button class="btn btn-primary" ng-click="singleWGCtrl.addNewShoppinglist()">Einkaufsliste hinzufügen

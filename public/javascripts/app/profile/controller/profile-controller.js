@@ -1,10 +1,10 @@
-app.controller('profileController', function(){
+app.controller('profileController', ['authService', function(authService){
     var vm = this;
 
     vm.showNewItem = false;
 
-    vm.name = "Katia Ci";
+    vm.name = authService.user.username;
     vm.email = "katia@example.com";
     vm.password = "xyz";
 
-});
+}]);

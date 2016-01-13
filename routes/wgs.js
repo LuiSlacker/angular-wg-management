@@ -1,9 +1,9 @@
 // modules  ========================================================
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
-var mongoose = require('mongoose');
+var express = require('express'),
+    router = express.Router(),
+    bodyParser = require('body-parser'),
+    jsonParser = bodyParser.json(),
+    mongoose = require('mongoose');
 
 // MongoDB model  =================================================
 require('../models/WGs');
@@ -37,6 +37,7 @@ router.get('/:wg', function(req, res){
 });
 
 router.post('/', jsonParser, function(req, res, next){
+    console.log(req.body);
     var wg = new WG(req.body);
     wg.save(function(err, wg){
         if (err) return next(err);

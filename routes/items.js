@@ -26,6 +26,7 @@ router.param('item', function(req, res, next, id){
 router.post('/', jsonParser, function(req, res, next){
     var item = new Item(req.body);
     item.shoppinglist = req.params.shoppinglist;
+    console.log(item);
     item.save(function(err, item){
         if (err) return next(err);
         req.shoppinglist.items.push(item);
@@ -46,6 +47,8 @@ router.get('/', function(req, res){
 router.put('/:item', jsonParser, function(req, res, next){
     req.item.name = req.body.name || req.item.name;
     req.item.purchased = req.body.purchased || req.item.purchased;
+    req.item.addedby = req.body.addedby || req.item.addedby;
+    req.item.purchasedby = req.body.purchasedby || req.item.purchasedby;
     req.item.save(function(err, item){
         if (err) return next(err);
         res.json(item);
