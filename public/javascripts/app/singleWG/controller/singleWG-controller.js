@@ -46,6 +46,16 @@ app.controller('singleWGController', ['$stateParams',
         vm.newShoppinglist = {};
     };
 
+    vm.updateShoppinglist = function(shoppinglistID){
+        singleWGService.updateShoppinglist(vm.wgID, vm.shoppinglistID, 
+            {"name": vm.name;
+             "date": vm.date
+            }
+        ).success(function(data){
+            singleWGService.getAllShoppinglists(vm.wgID);
+        });
+    };
+
     vm.deleteShoppinglist = function(shoppinglistId){
         singleWGService.deleteShoppinglist(vm.wgID, shoppinglistId).success(function(){
             singleWGService.getAllShoppinglists(vm.wgID);

@@ -41,6 +41,16 @@ app.controller('singleSLController', ['$stateParams',
             vm.newItem = {};
         };
 
+        vm.updateItem = function(itemID){
+            singleSLService.updateItem(vm.wgID, vm.shoppinglistID, itemID, 
+                {"name":   vm.item.name,
+                 "quantity": vm.item.quantity
+                }
+            ).success(function(data){
+                singleSLService.getAllItems(vm.wgID, vm.shoppinglistID);
+            });
+        };
+
         vm.purchaseItem = function(itemID){
             singleSLService.updateItem(vm.wgID, vm.shoppinglistID, itemID, {"purchased":   "true",
                                                                             "purchasedby": authService.user.username}).success(function(data){
