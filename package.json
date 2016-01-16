@@ -28,5 +28,13 @@
     "mongoose": "^4.3.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6",
+    "kerberos": "0.0.17",
+    "mongodb-core": "^1.2.32"
   }
 }

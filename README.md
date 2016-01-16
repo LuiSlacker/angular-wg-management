@@ -25,5 +25,13 @@ npm start
 ```
 and the node server will be listening on localhost:3000
 
+###Jasmine and Karma
+
+We use Jasmine as our Testing Framework and Karma as the task runner. Run your tests with: 
+
+```
+npm start
+```
+
 ##HEROKU DEPLOYMENT
 The App itself has been deployed to heroku.com and can be reached <a href="https://wg-manager.herokuapp.com" target="_bank">here<a/>.
