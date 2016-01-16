@@ -27,10 +27,10 @@ and the node server will be listening on localhost:3000
 
 ###Jasmine and Karma
 
-We use Jasmine as our Testing Framework and Karma as the task runner. Run your tests with: 
+We use Jasmine as our Testing Framework and Karma as the task runner. The configuration sets the browsers Chrome as captured automatically. Karma watches all the files and runs the tests on change. Run your tests with: 
 
 ```
-npm start
+karma start my.conf.js
 ```
 
 ##HEROKU DEPLOYMENT
