@@ -18,6 +18,14 @@ app.controller('loginController',['authService','$location', function(authServic
         });
     };
 
+    vm.facebookSignup = function(){
+        authService.facebookSignup().then(function(){
+            $location.path('app/wgs');
+        }).catch(function(e){
+            console.log(e);
+        });
+    };
+
     angular.element('.toggle').on('click', function(){
         angular.element('.containers').addClass('active');
     });

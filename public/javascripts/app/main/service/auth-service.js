@@ -56,6 +56,28 @@ app.factory('authService', ['$http', '$q', function($http, $q){
         return deferred.promise;
     };
 
+    o.facebookSignup = function(){
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/auth/facebook'
+        }).success(function(data, status){
+            if (status === 200 && data.facebook){
+                o.user = data.facebook;
+                deferred.resolve();
+            } else {
+                deferred.reject();
+                throw 'err';
+            }
+        }).error(function(data, status){
+            if(status === 401){
+                deferred.reject('Not Authorized');
+            }
+
+        });
+        return deferred.promise;
+    };
+
     o.isLoggedIn = function(){
         if(o.user.username) {
             return true;

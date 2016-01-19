@@ -19,15 +19,15 @@ mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost/wg-management',
 require('./config/passport')(passport);
 
 // Config ==========================================================
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 var router = express.Router();
 var jsonParser = bodyParser.json();
-app.use(expressSession({secret: 'wg-manager-secret'}));
+//app.use(expressSession({secret: 'wg-manager-secret'}));
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 // Routing =========================================================
 var wgs = require('./routes/wgs');
