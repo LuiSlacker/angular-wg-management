@@ -28,7 +28,8 @@
     "mongoose": "^4.3.4",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "angular-mocks": "^1.4.8"
   },
   "devDependencies": {
     "jasmine-core": "^2.4.1",
