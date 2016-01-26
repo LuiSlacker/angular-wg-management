@@ -30,7 +30,7 @@ app.controller('singleSLController', ['$stateParams',
 
         vm.addNewItem = function(){
             vm.newItem.shoppinglist = vm.shoppinglistID;
-            vm.newItem.addedby = authService.user.username;
+            vm.newItem.addedby = authService.user.local.username;
             singleSLService.createItem(vm.wgID, vm.shoppinglistID, vm.newItem);
             vm.showNewItem = false;
             vm.newItem = {};

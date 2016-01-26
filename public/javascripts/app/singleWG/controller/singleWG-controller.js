@@ -35,7 +35,7 @@ app.controller('singleWGController', ['$stateParams',
 
     vm.addNewShoppinglist = function(){
         vm.newShoppinglist.wg = vm.wgID;
-        vm.newShoppinglist.initiator = authService.user.username;
+        vm.newShoppinglist.initiator = authService.user.local.username;
         singleWGService.createShoppinglist(vm.wgID, vm.newShoppinglist);
         vm.showNewItem = false;
         vm.newShoppinglist = {};

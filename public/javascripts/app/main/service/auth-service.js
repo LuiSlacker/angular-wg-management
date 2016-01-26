@@ -41,7 +41,7 @@ app.factory('authService', ['$http', '$q', function($http, $q){
             data: {username: user.username, password: user.password}
         }).success(function(data, status){
             if (status === 200 && data.local){
-                o.user = data.local;
+                o.user = data;
                 deferred.resolve();
             } else {
                 deferred.reject();
@@ -79,7 +79,7 @@ app.factory('authService', ['$http', '$q', function($http, $q){
     };
 
     o.isLoggedIn = function(){
-        if(o.user.username) {
+        if(o.user.local.username) {
             return true;
         }
         else return false;
@@ -87,7 +87,7 @@ app.factory('authService', ['$http', '$q', function($http, $q){
 
     o.setUser = function(user){
         o.user = user;
-    }
+    };
 
     return o;
 }]);

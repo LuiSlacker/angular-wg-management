@@ -2,11 +2,16 @@ app.controller('profileController', ['authService','profileService', function(au
     var vm = this;
     vm.user = authService.user;
 
-	vm.updateProfile = function(){
-        profileService.updateProfile(vm.user).success(function() {
-        	authService.setUser(vm.user);
+	vm.updateUsername= function(data){
+        profileService.updateUsername(vm.user._id, data.username).success(function(data) {
+        	authService.setUser(data);
         });        	
     };
 
+    vm.updatePassword = function(){
+        profileService.updatePassword(vm.user._id, vm.user.local.password).success(function(data) {
+            authService.setUser(data);
+        });
+    };
 }]);
 

@@ -1,21 +1,51 @@
 <div ng-controller="profileController as profileCtrl" class="row">
     <h3>{{profileCtrl.name}}</h3>
-        <div class="panel panel-primary">
-            <div class="panel-heading">Change profile information</div>
-            <div class="panel-body">
-                <form> 
-                  <div class="form-group">
-                    <label for="Username">Benutzername</label>
-                    <input type="text" class="form-control" id="Username" ng-model="profileCtrl.user.local.username" required="required"/>
-                  </div>
 
-                  <div class="form-group">
-                    <label for="Password">Passwort</label>
-                    <input type="password" class="form-control" id="Password" ng-model="profileCtrl.user.local.password" required="required">
-                  </div>
-                  <button ng-click="profileCtrl.updateProfile()" class="btn btn-default">Speichern</button>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Change profile information</div>
+        <div class="panel-body">
+            <div>
+                <form editable-form name="editableForm" onbeforesave="profileCtrl.updateUsername($data)">
+                    <div>
+                        <!-- editable username (text with validation) -->
+                        <span class="title">Benutzername: </span>
+                        <span editable-text="profileCtrl.user.local.username">{{ profileCtrl.user.local.username }}</span>
+                        <!-- button to show form -->
+                        <button type="button" class="btn btn-default" ng-click="editableForm.$show()"
+                                ng-show="!editableForm.$visible">
+                            Ändern
+                        </button>
+                        <span ng-show="editableForm.$visible">
+                            <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                                Speichern
+                            </button>
+                            <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting"
+                                    ng-click="editableForm.$cancel()">
+                                Abbrechen
+                            </button>
+                          </span>
+                    </div>
                 </form>
-
             </div>
+
+            <!--<form editable-form name="rowform2">
+                <div class="form-group">
+                    <label>Passwort</label>
+                    <span editable-text="profileCtrl.user.local.password" e-form="rowform2" e-name="Password" e-required>{{profileCtrl.user.local.password}}</span>
+                    <button class="btn btn-active" ng-show="!rowform2.$visible" ng-click="rowform2.$show()"><i class="glyphicon glyphicon-edit"
+                                                                                                               title="Passwort ändern"></i>
+                        Bearbeiten
+                    </button>
+                </div>
+
+                <div class="buttons" ng-show="rowform2.$visible">
+                    <button type="button" ng-disabled="rowform2.$waiting" ng-click="rowform2.$cancel()"
+                            class="btn btn-default">
+                        Abbrechen
+                    </button>
+                    <button ng-click="profileCtrl.updatePwd()" ng-disabled="rowform2.$waiting" class="btn btn-default">Speichern</button>
+                </div>
+            </form>-->
         </div>
+    </div>
 </div>

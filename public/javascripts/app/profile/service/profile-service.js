@@ -1,8 +1,15 @@
 app.factory('profileService', ['$http', '$log', function($http, $log) {
 
     return {
-        updateProfile: function(user){
-            return $http.put('/users/' + user._id , user);
+        updateUsername: function(id, username){
+            return $http.put('/users/' + id , {
+                username: username
+            });
+        },
+        updatePassword: function(id, password){
+            return $http.put('/users/' + id , {
+                password: password
+            });
         }
     };
 
