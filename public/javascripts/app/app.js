@@ -87,6 +87,7 @@ var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
                         deps: ['uiLoad', function (uiLoad) {
                             return uiLoad.load([
                                 'public/javascripts/app/profile/controller/profile-controller.js',
+                                'public/javascripts/app/profile/service/profile-service.js',
                                 'public/javascripts/app/main/service/auth-service.js']);
                         }]
                     }

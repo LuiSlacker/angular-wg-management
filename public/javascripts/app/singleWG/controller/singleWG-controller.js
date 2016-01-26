@@ -13,7 +13,7 @@ app.controller('singleWGController', ['$stateParams',
     var vm = this;
     vm.showNewItem = false;
     vm.wgID = $stateParams.wgID;
-    vm.wgMembersHeadline = "WG Members";
+    vm.wgMembersHeadline = "WG Mitglieder";
     vm.shoppinglists = singleWGService.shoppinglists;
     vm.wgMembers= [
         {name: "Ludwig"},

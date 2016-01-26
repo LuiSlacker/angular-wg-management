@@ -31,7 +31,9 @@ app.use(passport.initialize());
 
 // Routing =========================================================
 var wgs = require('./routes/wgs');
+var users = require('./routes/users');
 app.use('/wgs', wgs);
+app.use('/users', users);
 var auth = require('./routes/authentication');
 app.use('/', auth);
 

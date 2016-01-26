@@ -1,10 +1,12 @@
-app.controller('profileController', ['authService', function(authService){
+app.controller('profileController', ['authService','profileService', function(authService, profileService){
     var vm = this;
+    vm.user = authService.user;
 
-    vm.showNewItem = false;
-
-    vm.name = authService.user.username;
-    vm.email = "katia@example.com";
-    vm.password = "xyz";
+	vm.updateProfile = function(){
+        profileService.updateProfile(vm.user).success(function() {
+        	authService.setUser(vm.user);
+        });        	
+    };
 
 }]);
+
