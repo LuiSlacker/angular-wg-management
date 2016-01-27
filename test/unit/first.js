@@ -6,11 +6,11 @@ describe('wg-managementApp', function () {
     beforeEach(function(){
         module('app');
 
-        inject(function($injector){
-            /*$rootScope = $injector.get('$rootScope');
+        /*inject(function($injector){
+            $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
-            controller = $injector.get('$controller')("singleSLController", {$scope:scope});*/
-        });
+            controller = $injector.get('$controller')("singleSLController", {$scope:scope});
+        });*/
     });
 
     it('should be true', function () {
