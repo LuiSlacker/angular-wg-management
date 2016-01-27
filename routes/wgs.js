@@ -5,9 +5,11 @@ var express = require('express'),
     jsonParser = bodyParser.json(),
     mongoose = require('mongoose');
 
-// MongoDB model  =================================================
+// MongoDB models  =================================================
 require('../models/WGs');
+require('../models/Users');
 var WG = mongoose.model('WG');
+var User = mongoose.model('Users');
 
 // WG Routing Parameter ============================================
 router.param('wg', function(req, res, next, id){
@@ -49,6 +51,7 @@ router.put('/:wg', jsonParser, function(req, res, next){
     req.wg.name = req.body.name || req.wg.name;
     req.wg.street = req.body.street || req.wg.street;
     req.wg.city = req.body.city || req.wg.city;
+
     req.wg.save(function(err, wg){
         if (err) return next(err);
         res.json(wg);
@@ -65,5 +68,10 @@ router.delete('/:wg', function(req, res, next){
 // Shoppinglist Routes  ==============================================
 var shoppinglistRoutes = require('./shoppinglists');
 router.use('/:wg/shoppinglists', shoppinglistRoutes);
+
+// UsersinWgs Routes  ================================================
+var membersInWgs = require('./membersInWgs');
+router.use('/:wg/members', membersInWgs);
+
 
 module.exports = router;

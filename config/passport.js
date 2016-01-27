@@ -36,14 +36,11 @@ module.exports = function(passport){
                         var newUser = new User();
                         newUser.local.username = userName;
                         newUser.local.password = newUser.generateHash(password);
-                        console.log(newUser.local.username);
-                        console.log(newUser.local.password);
                         newUser.save(function(err){
                             if (err) {
                                 console.log('err saving');
                                 throw err;
                             }
-                            console.log('ok');
                             return done(null, newUser);
                         })
                     }
@@ -52,7 +49,6 @@ module.exports = function(passport){
     }));
 
     passport.use('local-login', new LocalStrategy( function(username, password, done){
-        console.log('Blubb');
         User.findOne({'local.username': username}, function(err, user){
             if (err) return done(err);
             if (!user) {
