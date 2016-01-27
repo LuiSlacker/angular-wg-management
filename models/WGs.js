@@ -5,5 +5,5 @@ mongoose.model('WG', new mongoose.Schema({
     street: String,
     city: String,
     shoppinglists: [{type: mongoose.Schema.Types.ObjectId, ref: 'Shoppinglist'}],
-    user: {type: mongoose.Schema.Types.ObjectId, ref:'Users'}
+    members: [{type: mongoose.Schema.Types.ObjectId, ref:'Users'}]
 }));

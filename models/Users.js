@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
         email        : String,
         name         : String
     },
-    wgs: [{type: mongoose.Schema.Types.ObjectId, ref:'WG'}]
+    wg: {type: mongoose.Schema.Types.ObjectId, ref:'WG'}
 });
 
 userSchema.methods.generateHash = function(password){

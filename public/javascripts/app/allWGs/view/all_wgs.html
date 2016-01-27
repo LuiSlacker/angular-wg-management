@@ -34,8 +34,9 @@
                         </form>
                 
                         <div class="buttons" ng-show="!rowform.$visible">
-                            <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-edit"></i> Bearbeiten</button>
+                            <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-pencil"></i> Bearbeiten</button>
                             <button class="btn btn-danger" ng-click="allWGsCtrl.deleteWG(wg._id)"><i class="glyphicon glyphicon-trash"></i> Löschen</button>
+                            <button class="btn btn-success" ng-show="!allWGsCtrl.user.wg" title="Einschreiben" ng-click="allWGsCtrl.registerForWg(wg._id)"><i class="glyphicon glyphicon-pushpin"></i></button>
                         </div>
                     </td>
                 </tr>
