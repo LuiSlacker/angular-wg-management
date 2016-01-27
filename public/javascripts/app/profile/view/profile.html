@@ -2,14 +2,14 @@
     <h3>{{profileCtrl.name}}</h3>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Change profile information</div>
+        <div class="panel-heading">Profilinformationen ändern</div>
         <div class="panel-body">
             <div>
-                <form editable-form name="editableForm" onbeforesave="profileCtrl.updateUsername($data)">
+                <form editable-form name="editableForm" onaftersave="profileCtrl.updateUsername()">
                     <div>
                         <!-- editable username (text with validation) -->
                         <span class="title">Benutzername: </span>
-                        <span editable-text="profileCtrl.user.local.username">{{ profileCtrl.user.local.username }}</span>
+                        <span editable-text="profileCtrl.user.local.username">{{profileCtrl.user.local.username}}</span>
                         <!-- button to show form -->
                         <button type="button" class="btn btn-default" ng-click="editableForm.$show()"
                                 ng-show="!editableForm.$visible">
