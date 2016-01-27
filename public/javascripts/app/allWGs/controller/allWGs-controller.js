@@ -1,6 +1,3 @@
-/**
- * Created by petulantslacker on 12/12/15.
- */
 app.controller('allWGsController', ['allWGsService', function(allWGsService){
 
     // config ===============================================================

@@ -30,7 +30,7 @@ and the node server will be listening on localhost:3000
 We use Jasmine as our Testing Framework and Karma as the task runner. The configuration sets the browsers Chrome as captured automatically. Karma watches all the files and runs the tests on change. Run your tests with: 
 
 ```
-karma start my.conf.js
+karma start
 ```
 
 ##HEROKU DEPLOYMENT
