@@ -79,7 +79,7 @@ app.factory('authService', ['$http', '$q', function($http, $q){
     };
 
     o.isLoggedIn = function(){
-        if(o.user.local.username) {
+        if(o.user.local && o.user.local.username) {
             return true;
         }
         else return false;

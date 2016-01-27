@@ -20,7 +20,6 @@ router.param('wg', function(req, res, next, id){
             next(new Error('Failed to load WG'));
         } else{
             req.wg = wg;
-            req.wgID = id;
             next();
         }
     })
@@ -52,26 +51,7 @@ router.put('/:wg', jsonParser, function(req, res, next){
     req.wg.name = req.body.name || req.wg.name;
     req.wg.street = req.body.street || req.wg.street;
     req.wg.city = req.body.city || req.wg.city;
-    if (req.body.user){
-        console.log("persist new user");
-        req.wg.members.push(req.body.user);
-        User.findById(req.body.user, function(err, user){
-            console.log(user);
-            if (err){
-                next(err)
-            } else if (!user) {
-                next(new Error('Failed to load User'));
-            } else{
-                console.log(req.wgID);
-                user.wg = req.wgID;
-                console.log(user);
-                user.save(function(err, user){
-                    if (err) return next(err);
-                    console.log('User saved');
-                });
-            }
-        });
-    }
+
     req.wg.save(function(err, wg){
         if (err) return next(err);
         res.json(wg);
@@ -88,5 +68,10 @@ router.delete('/:wg', function(req, res, next){
 // Shoppinglist Routes  ==============================================
 var shoppinglistRoutes = require('./shoppinglists');
 router.use('/:wg/shoppinglists', shoppinglistRoutes);
+
+// UsersinWgs Routes  ================================================
+var membersInWgs = require('./membersInWgs');
+router.use('/:wg/members', membersInWgs);
+
 
 module.exports = router;

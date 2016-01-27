@@ -2,59 +2,66 @@
  * Created by petulantslacker on 14/12/15.
  */
 app.controller('singleWGController', ['$stateParams',
-                                      'singleWGService',
-                                      'allWGsService',
-                                      'authService', function($stateParams,
-                                                              singleWGService,
-                                                              allWGsService,
-                                                              authService){
+    '$state',
+    'singleWGService',
+    'allWGsService',
+    'authService', function ($stateParams,
+                             $state,
+                             singleWGService,
+                             allWGsService,
+                             authService) {
 
-    // config ====================================================================
-    var vm = this;
-    vm.showNewItem = false;
-    vm.wgID = $stateParams.wgID;
-    vm.wgMembersHeadline = "WG Mitglieder";
-    vm.shoppinglists = singleWGService.shoppinglists;
-    vm.wgMembers= [
-        {name: "Ludwig"},
-        {name: "Kati"},
-        {name: "Kommissar Borowski"},
-        {name: "Romano"}
-    ];
-
-    // controller functions ======================================================
-    allWGsService.getSingleWG(vm.wgID).success(function(data){
-        vm.wgName = data.name;
-    });
-
-    singleWGService.getAllShoppinglists(vm.wgID);
-
-    vm.newItem = function(){
-        vm.showNewItem = true;
-    };
-
-    vm.addNewShoppinglist = function(){
-        vm.newShoppinglist.wg = vm.wgID;
-        vm.newShoppinglist.initiator = authService.user.local.username;
-        singleWGService.createShoppinglist(vm.wgID, vm.newShoppinglist);
+        // config ====================================================================
+        var vm = this;
         vm.showNewItem = false;
-        vm.newShoppinglist = {};
-    };
+        vm.wgID = $stateParams.wgID;
+        vm.shoppinglists = singleWGService.shoppinglists;
+        singleWGService.getAllShoppinglists(vm.wgID);
+        vm.user = authService.user;
 
-    vm.cancelAddingNewShoppinglist = function(){
-        vm.showNewItem = false;
-        vm.newShoppinglist = {};
-    };
-
-    vm.updateShoppinglist = function(shoppinglistId, data){
-        singleWGService.updateShoppinglist(vm.wgID, shoppinglistId, data).success(function(data){
-            singleWGService.getAllShoppinglists(vm.wgID);
+        allWGsService.getAllMembers(vm.wgID).success(function (data) {
+            vm.members = data;
         });
-    };
 
-    vm.deleteShoppinglist = function(shoppinglistId){
-        singleWGService.deleteShoppinglist(vm.wgID, shoppinglistId).success(function(){
-            singleWGService.getAllShoppinglists(vm.wgID);
+        // controller functions ======================================================
+        allWGsService.getSingleWG(vm.wgID).success(function (data) {
+            vm.wg = data;
         });
-    }
-}]);
+
+        vm.newItem = function () {
+            vm.showNewItem = true;
+        };
+
+        vm.addNewShoppinglist = function () {
+            vm.newShoppinglist.wg = vm.wgID;
+            vm.newShoppinglist.initiator = authService.user.local.username;
+            singleWGService.createShoppinglist(vm.wgID, vm.newShoppinglist);
+            vm.showNewItem = false;
+            vm.newShoppinglist = {};
+        };
+
+        vm.cancelAddingNewShoppinglist = function () {
+            vm.showNewItem = false;
+            vm.newShoppinglist = {};
+        };
+
+        vm.updateShoppinglist = function (shoppinglistId, data) {
+            singleWGService.updateShoppinglist(vm.wgID, shoppinglistId, data).success(function (data) {
+                singleWGService.getAllShoppinglists(vm.wgID);
+            });
+        };
+
+        vm.deleteShoppinglist = function (shoppinglistId) {
+            singleWGService.deleteShoppinglist(vm.wgID, shoppinglistId).success(function () {
+                singleWGService.getAllShoppinglists(vm.wgID);
+            });
+        };
+
+        vm.unRegisterFromWg = function () {
+            allWGsService.unRegisterForWG(vm.wgID, authService.user._id).success(function (data) {
+                authService.user = data;
+                $state.go('app.wgs');
+            });
+        };
+
+    }]);

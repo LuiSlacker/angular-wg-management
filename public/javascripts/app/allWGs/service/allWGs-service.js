@@ -28,6 +28,18 @@ app.factory('allWGsService', ['$http', '$log', function($http, $log) {
         return $http.put('/wgs/' + wgID, wg);
     };
 
+    o.registerForWG = function(wgID, userID){
+        return $http.put('/wgs/'+ wgID + "/members/" + userID)
+    };
+
+    o.unRegisterForWG = function(wgID, userID){
+        return $http.delete('/wgs/'+ wgID + "/members/" + userID)
+    };
+
+    o.getAllMembers = function(wgID){
+        return $http.get('/wgs/'+ wgID + "/members/")
+    };
+
     return o;
 }]);
 

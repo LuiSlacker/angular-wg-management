@@ -40,7 +40,8 @@ app.controller('allWGsController', ['$location','$state','allWGsService','authSe
     };
 
     vm.registerForWg = function(wgID){
-        allWGsService.update(wgID, {user: authService.user._id}).success(function(data){
+        allWGsService.registerForWG(wgID,authService.user._id).success(function(data){
+            authService.user = data;
             $state.go('app.wg',{wgID:wgID});
         });
     };
