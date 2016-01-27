@@ -27,7 +27,7 @@ router.param('user', function(req, res, next, id){
 // User Routes  ======================================================
 router.put('/:user',  jsonParser, function(req, res){
     req.user.local.username = req.body.local.username || req.user.local.username;
-    req.user.local.password = (req.body.password)? req.user.generateHash(req.body.password) : req.user.local.password;
+    req.user.local.password = (req.body.local.password)? req.user.generateHash(req.body.local.password) : req.user.local.password;
     req.user.save(function(err, user){
         if (err) return next(err);
         res.json(user);
