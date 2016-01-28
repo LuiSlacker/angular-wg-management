@@ -37,6 +37,19 @@
 
 <div ui-view></div>
 
+<div class="chat-box" ng-controller="ChatController">
+    <input type="checkbox" />
+    <label data-expanded="Close Chat" data-collapsed="Open Chat"></label>
+
+    <div class="chat-box-content">
+        <div class="{{message.class}}" ng-repeat="message in messages track by $index">{{message.msg}}</div>
+        <div class="chat-input-group">
+            <input type="text" id='text' class="form-control-sm" ng-model="newlyTypedMessage"/>
+            <button class="btn btn-sm btn-primary" data-ng-click="sendMsg()"><i class="glyphicon glyphicon-send"></i></button>
+        </div>
+    </div>
+</div>
+
 <!--<footer class="footer">
     <div class="container">
         <p class="text-muted">© 2016 Katia, Ludwig @ HTW Berlin</p>
