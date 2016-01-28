@@ -3,11 +3,13 @@
 var express = require('express'),
     app = express(),
     mongoose = require('mongoose'),
-    //path = require('path'),
     passport = require('passport'),
     expressSession = require('express-session'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    http = require('http'),
+    server = http.createServer(app),
+    io = require('socket.io').listen(server);
 
 
 // connect to MongoDB ==============================================
@@ -37,13 +39,25 @@ app.use('/users', users);
 var auth = require('./routes/authentication');
 app.use('/', auth);
 
+// Chat  ============================================================
+io.on('connection', function(socket){
+    console.log('a user connected');
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+    socket.on('messageSent', function(msg){
+        console.log('message sent from %s: %s ',msg.name, msg.message);
+        socket.broadcast.emit('tweet', msg);
+    });
+});
+
 
 // Server ==========================================================
 app.use(express.static(__dirname));
 
-var server = app.listen(process.env.PORT || 3000, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+var serv = server.listen(process.env.PORT || 3000, function () {
+    var host = serv.address().address;
+    var port = serv.address().port;
 
     console.log('wg-management app listening at http://%s:%s', host, port);
 });
