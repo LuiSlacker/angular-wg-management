@@ -4,50 +4,44 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Profilinformationen ändern</div>
         <div class="panel-body">
-            <div>
-                <form editable-form name="editableForm" onaftersave="profileCtrl.updateUser()">
-                    <div>
-                        <!-- editable username -->
-                        <span>Benutzername: </span>
-                        <span editable-text="profileCtrl.user.local.username" e-required>{{profileCtrl.user.local.username}}</span>
-                        <!-- button to show form -->
-                        <button type="button" class="btn btn-default" ng-click="editableForm.$show()"
-                                ng-show="!editableForm.$visible">
-                            Ändern
-                        </button>
-                        <span ng-show="editableForm.$visible">
-                            <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
-                                Speichern
-                            </button>
-                            <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting"
-                                    ng-click="editableForm.$cancel()">
-                                Abbrechen
-                            </button>
-                          </span>
-                    </div>
-                </form>
-            </div>
+            <form editable-form name="editableForm" onaftersave="profileCtrl.updateUser()">
+                <!-- editable username -->
+                <label class="col-xs-12">Benutzername</label>
+                <span class="col-xs-3" editable-text="profileCtrl.user.local.username" e-required>{{profileCtrl.user.local.username}}</span>
+                <!-- button to show form -->
+                <button type="button" class="btn btn-default" ng-click="editableForm.$show()"
+                        ng-show="!editableForm.$visible">
+                    Ändern
+                </button>
+                <span ng-show="editableForm.$visible">
+                    <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                        Speichern
+                    </button>
+                    <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting"
+                            ng-click="editableForm.$cancel()">
+                        Abbrechen
+                    </button>
+                  </span>
+            </form>
 
             <form editable-form name="editableForm2" onaftersave="profileCtrl.updateUser()">
-                <div class="form-group">
-                    <!-- editable password -->
-                    <span>Passwort</span>
-                    <span editable-text="profileCtrl.user.local.password" e-required><em>hidden</em></span>
-                   <!-- button to show form -->
-                    <button type="button" class="btn btn-default" ng-click="editableForm2.$show()"
-                            ng-show="!editableForm2.$visible">
-                        Ändern
+                <!-- editable password -->
+                <label class="col-xs-12">Passwort</label>
+                <span class="col-xs-3" editable-text="profileCtrl.user.local.password" e-required><em>hidden</em></span>
+               <!-- button to show form -->
+                <button type="button" class="btn btn-default" ng-click="editableForm2.$show()"
+                        ng-show="!editableForm2.$visible">
+                    Ändern
+                </button>
+                <span ng-show="editableForm2.$visible">
+                    <button type="submit" class="btn btn-primary" ng-disabled="editableForm2.$waiting">
+                        Speichern
                     </button>
-                    <span ng-show="editableForm2.$visible">
-                        <button type="submit" class="btn btn-primary" ng-disabled="editableForm2.$waiting">
-                            Speichern
-                        </button>
-                        <button type="button" class="btn btn-default" ng-disabled="editableForm2.$waiting"
-                                ng-click="editableForm2.$cancel()">
-                            Abbrechen
-                        </button>
-                      </span>
-                </div>
+                    <button type="button" class="btn btn-default" ng-disabled="editableForm2.$waiting"
+                            ng-click="editableForm2.$cancel()">
+                        Abbrechen
+                    </button>
+                  </span>
             </form>
         </div>
     </div>

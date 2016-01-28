@@ -46,26 +46,30 @@
                 <i
                         class="glyphicon glyphicon-plus"></i> Neue WG hinzufügen
             </button>
-            <div ng-show="allWGsCtrl.showNewItem">
-                <h4>Neue WG anlegen</h4>
+            <form class="form-inline">
+                <div class="form-group" ng-show="allWGsCtrl.showNewItem">
+                    <h4>Neue WG anlegen</h4>
 
-                <div class="input-group">
-                    <span class="input-group-addon">WG-Name</span>
-                    <input type="text" class="form-control" placeholder="Im Fernsehturm"
-                           ng-model="allWGsCtrl.newWG.name">
-
-                    <span class="input-group-addon">Straße</span>
-                    <input type="text" class="form-control" placeholder="Alexanderplatz"
-                           ng-model="allWGsCtrl.newWG.street">
-
-                    <span class="input-group-addon">Stadt</span>
-                    <input type="text" class="form-control" placeholder="Berlin" ng-model="allWGsCtrl.newWG.city">
+                    <div class="input-group">
+                        <span class="input-group-addon">WG-Name</span>
+                        <input type="text" class="form-control" placeholder="Im Fernsehturm"
+                               ng-model="allWGsCtrl.newWG.name">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">Straße</span>
+                        <input type="text" class="form-control" placeholder="Alexanderplatz"
+                               ng-model="allWGsCtrl.newWG.street">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">Stadt</span>
+                        <input type="text" class="form-control" placeholder="Berlin" ng-model="allWGsCtrl.newWG.city">
+                    </div>
+                    <div class="confirmButton">
+                        <button class="btn btn-primary" ng-click="allWGsCtrl.addNewWG()">WG hinzufügen</button>
+                        <button class="btn" ng-click="allWGsCtrl.cancelAddingNewWG()">Abbrechen</button>
+                    </div>
                 </div>
-                <div class="confirmButton">
-                    <button class="btn btn-primary" ng-click="allWGsCtrl.addNewWG()">WG hinzufügen</button>
-                    <button class="btn" ng-click="allWGsCtrl.cancelAddingNewWG()">Abbrechen</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -12,3 +12,11 @@ span{
 body{
     margin-bottom: 0px;
 }
+
+.input-group {
+	margin-bottom: 10px;
+}
+
+.input-group span {
+	width: 20px;
+}
