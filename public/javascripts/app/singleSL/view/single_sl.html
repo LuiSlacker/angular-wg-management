@@ -48,26 +48,28 @@
                             ng-click="singleSLCtrl.enableAddingNewItem()"><i
                             class="glyphicon glyphicon-plus"></i> Neuen Posten hinzufügen
                     </button>
-                    <div ng-show="singleSLCtrl.showNewItem">
-                        <h4>Neuen Posten anlegen</h4>
+                    <form class="form-inline">
+                        <div class="form-group" ng-show="singleSLCtrl.showNewItem">
+                            <h4>Neuen Posten anlegen</h4>
 
-                        <div class="input-group">
-                            <span class="input-group-addon">Name</span>
-                            <input type="text" class="form-control" placeholder="Neuer Posten"
-                                   ng-model="singleSLCtrl.newItem.name">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon">Anzahl</span>
-                            <input type="number" class="form-control" ng-init="singleSLCtrl.newItem.quantity=1"
-                                   ng-model="singleSLCtrl.newItem.quantity">
+                            <div class="input-group">
+                                <span class="input-group-addon">Name</span>
+                                <input type="text" class="form-control" placeholder="Neuer Posten"
+                                       ng-model="singleSLCtrl.newItem.name">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Anzahl</span>
+                                <input type="number" class="form-control" ng-init="singleSLCtrl.newItem.quantity=1"
+                                       ng-model="singleSLCtrl.newItem.quantity">
 
+                            </div>
+                            <div class="confirmButton">
+                                <button class="btn btn-primary" ng-click="singleSLCtrl.addNewItem()">Posten hinzufügen
+                                </button>
+                                <button class="btn" ng-click="singleSLCtrl.cancelAddingNewItem()">Abbrechen</button>
+                            </div>
                         </div>
-                        <div class="confirmButton">
-                            <button class="btn btn-primary" ng-click="singleSLCtrl.addNewItem()">Posten hinzufügen
-                            </button>
-                            <button class="btn" ng-click="singleSLCtrl.cancelAddingNewItem()">Abbrechen</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
