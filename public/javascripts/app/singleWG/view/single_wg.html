@@ -1,12 +1,7 @@
 <div ng-controller="singleWGController as singleWGCtrl">
-    <div class="row">
-        <div class="col-xs-6">
-            <h3>{{singleWGCtrl.wg.name}}</h3>
-        </div>
-        <div class="col-xs-1 col-xs-offset-5">
-            <button ng-show="singleWGCtrl.user.wg == singleWGCtrl.wgID" ng-click="singleWGCtrl.unRegisterFromWg()" style="margin-top:20px" class="btn btn-danger"><i class="glyphicon glyphicon-eject"></i></button>
-        </div>
-    </div>
+   <h3 class="ng-binding">{{singleWGCtrl.wg.name}} 
+    <button ng-show="singleWGCtrl.user.wg == singleWGCtrl.wgID" ng-click="singleWGCtrl.unRegisterFromWg()" style="" class="left btn btn-danger"><i class="glyphicon glyphicon-eject"></i></button>
+    </h3>
 
     <div style="clear:both" class="row">
         <div class="col-xs-12 col-md-3">
