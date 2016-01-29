@@ -3,7 +3,10 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         ngdocs: {
-            all: ['src/resources/js/*.js']
+            options: {
+                dest: 'public/docs'
+            },
+            all: ['public/javascripts/**/*.js']
         }
     });
 

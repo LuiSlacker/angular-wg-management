@@ -1,5 +1,13 @@
 /**
- * Created by petulantslacker on 14/12/15.
+ * @ngdoc controller
+ * @name app.controller: singleWGController
+ * @requires $stateParams
+ * @requires $state
+ * @requires singleWGService
+ * @requires allWGsService
+ * @requires authService
+ * @description
+ * The controller to handle all shoppinglist related stuff
  */
 app.controller('singleWGController', ['$stateParams',
     '$state',

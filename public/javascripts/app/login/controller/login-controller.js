@@ -1,3 +1,11 @@
+/**
+ * @ngdoc controller
+ * @name app.controller: loginController
+ * @requires authService
+ * @requires $location
+ * @description
+ *  This controller is responsible for login and signup procedures
+ */
 app.controller('loginController',['authService','$location', function(authService, $location){
     var vm = this;
 

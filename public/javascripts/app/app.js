@@ -3,7 +3,9 @@
  */
 'use strict';
 /**
- *
+ * @ngdoc object
+ * @name app
+ * @description main module
  */
 var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
 
@@ -94,6 +96,10 @@ var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
                 .state('app.impressum', {
                     url: '/impressum',
                     templateUrl: 'public/javascripts/app/impressum/view/impressum.html'
+                })
+                .state('docs', {
+                    url: '/docs',
+                    templateUrl: 'public/docs/index.html'
                 })
         }])
 

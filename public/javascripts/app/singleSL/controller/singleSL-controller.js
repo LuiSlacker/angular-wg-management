@@ -1,5 +1,13 @@
 /**
- * Created by petulantslacker on 15/12/15.
+ * @ngdoc controller
+ * @name app.controller: singleSLController
+ * @requires $stateParams
+ * @requires singleSLService
+ * @requires singleWGService
+ * @requires allWGsService
+ * @requires authService
+ * @description
+ * The controller to handle all item related stuff
  */
 app.controller('singleSLController', ['$stateParams',
     'singleSLService',

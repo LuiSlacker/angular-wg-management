@@ -1,3 +1,11 @@
+/**
+ * @ngdoc controller
+ * @name app.controller: ChatController
+ * @requires $scope
+ * @requires authService
+ * @description
+ *  This controller is responsible for the entire chat functionality
+ */
 app.controller('ChatController', ['$scope','authService', function($scope, authService){
     $scope.name = '';
     $scope.newlyTypedMessage = '';
