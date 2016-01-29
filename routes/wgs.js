@@ -39,7 +39,6 @@ router.get('/:wg', function(req, res){
 });
 
 router.post('/', jsonParser, function(req, res, next){
-    console.log(req.body);
     var wg = new WG(req.body);
     wg.save(function(err, wg){
         if (err) return next(err);
@@ -51,7 +50,6 @@ router.put('/:wg', jsonParser, function(req, res, next){
     req.wg.name = req.body.name || req.wg.name;
     req.wg.street = req.body.street || req.wg.street;
     req.wg.city = req.body.city || req.wg.city;
-
     req.wg.save(function(err, wg){
         if (err) return next(err);
         res.json(wg);

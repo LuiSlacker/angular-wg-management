@@ -1,20 +1,14 @@
-/**
- * Created by petulantslacker on 29/01/16.
- */
 module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
         ngdocs: {
-            all: ['public/javascripts/*.js']
+            all: ['src/resources/js/*.js']
         }
     });
 
-    // Load the plugin that provides the "uglify" task.
+    // Load the plugin that provide tasks.
     grunt.loadNpmTasks('grunt-ngdocs');
 
-    // Default task(s).
-    grunt.registerTask('default', ['ngdocs']);
-
+    grunt.registerTask('docs', 'Generate documentation', ['ngdocs']);
 };

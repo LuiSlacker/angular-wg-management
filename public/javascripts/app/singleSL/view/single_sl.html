@@ -16,8 +16,6 @@
                         <th>Anzahl</th>
                         <th>Hinzugefügt von</th>
                         <th></th>
-                        <th></th>
-                        <th></th>
                         </thead>
                         <tbody>
                         <tr ng-repeat="item in singleSLCtrl.items" ng-if="!item.purchased">
@@ -36,7 +34,7 @@
                                 </form>
                         
                                 <div class="buttons" ng-show="!rowform.$visible">
-                                    <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-edit" title="Posten bearbeiten"></i></button>
+                                    <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-pencil" title="Posten bearbeiten"></i></button>
                                     <button class="btn btn-danger" ng-click="singleSLCtrl.deleteItem(item._id)" title="Posten löschen"><i class="glyphicon glyphicon-trash"></i></button>
                                     <button class="btn btn-success" ng-click="singleSLCtrl.purchaseItem(item._id)" title="Posten kaufen"><i class="glyphicon glyphicon-usd"></i></button>
                                 </div>

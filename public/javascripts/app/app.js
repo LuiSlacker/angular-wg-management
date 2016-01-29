@@ -2,7 +2,9 @@
  * Created by petulantslacker on 12/12/15.
  */
 'use strict';
-
+/**
+ *
+ */
 var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
 
     .config([
@@ -47,9 +49,6 @@ var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
                                 'public/javascripts/app/allWGs/service/allWGs-service.js'
                             ]);
                         }]
-                        /*postPromise: ['allWGsService', function(allWGsService){
-                            return allWGsService.getAllWGs();
-                        }]*/
                     }
                 })
                 .state('app.wg', {
