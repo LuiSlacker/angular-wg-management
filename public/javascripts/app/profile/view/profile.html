@@ -27,7 +27,7 @@
             <form editable-form name="editableForm2" onaftersave="profileCtrl.updateUser()">
                 <!-- editable password -->
                 <label class="col-xs-12">Passwort</label>
-                <span class="col-xs-3" editable-text="profileCtrl.user.local.password" e-required><em>hidden</em></span>
+                <span class="col-xs-3" editable-text="profileCtrl.user.local.password" e-type="password" e-required><em>hidden</em></span>
                <!-- button to show form -->
                 <button type="button" class="btn btn-default" ng-click="editableForm2.$show()"
                         ng-show="!editableForm2.$visible">
