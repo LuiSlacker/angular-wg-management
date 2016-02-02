@@ -21,7 +21,7 @@
                         <tr ng-repeat="item in singleSLCtrl.items" ng-if="!item.purchased">
                             <td><span editable-text="item.name" e-name="name" e-form="rowform" e-required>{{item.name}}</span></td>
                             <td><span editable-text="item.quantity" e-name="quantity" e-form="rowform" e-required>{{item.quantity}}</span></td>
-                            <td>{{item.addedby}}</td>
+                            <td><span editable-text="item.addedby" e-form="rowform" e-readonly>{{item.addedby}}</span></td>
                             <td>
                                 <!-- form -->
                                 <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == item._id" onbeforesave="singleSLCtrl.updateItem(item._id, $data)">
@@ -46,7 +46,7 @@
                             ng-click="singleSLCtrl.enableAddingNewItem()"><i
                             class="glyphicon glyphicon-plus"></i> Neuen Posten hinzufügen
                     </button>
-                    <form class="form-inline">
+                    <form class="form-inline new-form">
                         <div class="form-group" ng-show="singleSLCtrl.showNewItem">
                             <h4>Neuen Posten anlegen</h4>
 

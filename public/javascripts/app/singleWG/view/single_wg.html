@@ -28,12 +28,12 @@
                         <tbody>
                         <tr ng-repeat="sl in singleWGCtrl.shoppinglists">
                             <td>
-                                <span editable-text="sl.name" e-name="name" e-form="rowform" e-required>
+                                <span editable-text="sl.name" e-form="rowform" e-required>
                                   <a ui-sref="app.shoppinglist({shoppinglistID: '{{sl._id}}', wgID: '{{singleWGCtrl.wgID}}'})">{{sl.name}}</a>
                                 </span>
                             </td>
-                            <td>{{sl.initiator}}</td>
-                            <td>{{sl.date | date: 'MM/dd/yyyy @ h:mma'}}</td>
+                            <td><span editable-text="sl.initiator" e-form="rowform" e-readonly>{{sl.initiator}}</span></td>
+                            <td><span editable-text="sl.date" e-form="rowform" e-readonly>{{sl.date | date: 'MM/dd/yyyy @ h:mma'}}</span></td>
                             <td>
                                 <!-- form -->
                                 <form editable-form name="rowform" ng-show="rowform.$visible"
@@ -65,7 +65,7 @@
                             ng-click="singleWGCtrl.newItem()"><i
                             class="glyphicon glyphicon-plus"></i> Neue Liste hinzufügen
                     </button>
-                    <div ng-show="singleWGCtrl.showNewItem">
+                    <div class="new-form" ng-show="singleWGCtrl.showNewItem">
                         <h4>Neue Einkaufsliste anlegen</h4>
 
                         <div class="input-group">

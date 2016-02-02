@@ -41,11 +41,11 @@
                 </tr>
                 </tbody>
             </table>
-            <button ng-hide="allWGsCtrl.showNewItem" class="btn btn-primary addButton" ng-click="allWGsCtrl.newItem()">
+            <button ng-hide="allWGsCtrl.showNewItem" class="btn btn-primary" ng-click="allWGsCtrl.newItem()">
                 <i
                         class="glyphicon glyphicon-plus"></i> Neue WG hinzufügen
             </button>
-            <form class="form-inline">
+            <form class="form-inline new-form">
                 <div class="form-group" ng-show="allWGsCtrl.showNewItem">
                     <h4>Neue WG anlegen</h4>
 
@@ -63,7 +63,7 @@
                         <span class="input-group-addon">Stadt</span>
                         <input type="text" class="form-control" placeholder="Berlin" ng-model="allWGsCtrl.newWG.city">
                     </div>
-                    <div class="confirmButton">
+                    <div>
                         <button class="btn btn-primary" ng-click="allWGsCtrl.addNewWG()">WG hinzufügen</button>
                         <button class="btn" ng-click="allWGsCtrl.cancelAddingNewWG()">Abbrechen</button>
                     </div>
