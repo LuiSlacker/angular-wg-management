@@ -23,27 +23,29 @@
                     <td><span editable-text="wg.city" e-name="city" e-form="rowform" e-required>{{wg.city}}</span></td>
                     <td>
                         <!-- form -->
-                        <form editable-form name="rowform" onbeforesave="allWGsCtrl.updateWG(wg._id, $data)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == wg._id">
+                        <form editable-form name="rowform" onbeforesave="allWGsCtrl.updateWG(wg._id, $data)" ng-show="rowform.$visible" class="form-inline" shown="inserted == wg._id">
                           <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                            Speichern
+                            <span
+                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs"> Speichern</span>
+                                    </button>
                           </button>
                           <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                            Abbrechen
+                            <span
+                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Abbrechen</span>
                           </button>
                         </form>
                 
-                        <div class="buttons" ng-show="!rowform.$visible">
-                            <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-pencil"></i></button>
-                            <button class="btn btn-danger" ng-click="allWGsCtrl.deleteWG(wg._id)"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-success" ng-show="!allWGsCtrl.user.wg" title="Einschreiben" ng-click="allWGsCtrl.registerForWg(wg._id)"><i class="glyphicon glyphicon-pushpin"></i></button>
+                        <div ng-show="!rowform.$visible">
+                            <button class="btn btn-active" ng-click="rowform.$show()"><span class="glyphicon glyphicon-pencil"></span></button>
+                            <button class="btn btn-danger" ng-click="allWGsCtrl.deleteWG(wg._id)"><span class="glyphicon glyphicon-trash"></span></button>
+                            <button class="btn btn-success" ng-show="!allWGsCtrl.user.wg" title="Einschreiben" ng-click="allWGsCtrl.registerForWg(wg._id)"><span class="glyphicon glyphicon-pushpin"></span></button>
                         </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <button ng-hide="allWGsCtrl.showNewItem" class="btn btn-primary" ng-click="allWGsCtrl.newItem()">
-                <i
-                        class="glyphicon glyphicon-plus"></i> Neue WG hinzufügen
+                <span class="glyphicon glyphicon-plus"></span> Neue WG hinzufügen
             </button>
             <form class="form-inline new-form">
                 <div class="form-group" ng-show="allWGsCtrl.showNewItem">

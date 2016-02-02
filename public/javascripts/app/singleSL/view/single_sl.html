@@ -1,7 +1,7 @@
 <div ng-controller="singleSLController as singleSLCtrl">
     <h3>
         <a ui-sref="app.wg({wgID:'{{singleSLCtrl.wgID}}'})">{{singleSLCtrl.wg.name}}</a>
-        <i class="glyphicon glyphicon-triangle-right"></i>
+        <span class="glyphicon glyphicon-triangle-right"></span>
         {{singleSLCtrl.shoppinglist.name}}
     </h3>
 
@@ -24,27 +24,30 @@
                             <td><span editable-text="item.addedby" e-form="rowform" e-readonly>{{item.addedby}}</span></td>
                             <td>
                                 <!-- form -->
-                                <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == item._id" onbeforesave="singleSLCtrl.updateItem(item._id, $data)">
+                                <form editable-form name="rowform" ng-show="rowform.$visible" class="item-form form-inline" shown="inserted == item._id" onbeforesave="singleSLCtrl.updateItem(item._id, $data)">
                                   <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                                    Speichern
+                                    <span
+                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs"> Speichern</span>
+                                    </button>
                                   </button>
                                   <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                                    Abbrechen
+                                    <span
+                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Abbrechen</span>
                                   </button>
                                 </form>
                         
-                                <div class="buttons" ng-show="!rowform.$visible">
-                                    <button class="btn btn-active" ng-click="rowform.$show()"><i class="glyphicon glyphicon-pencil" title="Posten bearbeiten"></i></button>
-                                    <button class="btn btn-danger" ng-click="singleSLCtrl.deleteItem(item._id)" title="Posten löschen"><i class="glyphicon glyphicon-trash"></i></button>
-                                    <button class="btn btn-success" ng-click="singleSLCtrl.purchaseItem(item._id)" title="Posten kaufen"><i class="glyphicon glyphicon-usd"></i></button>
+                                <div ng-show="!rowform.$visible">
+                                    <button class="btn btn-active" ng-click="rowform.$show()"><span class="glyphicon glyphicon-pencil" title="Posten bearbeiten"></span></button>
+                                    <button class="btn btn-danger" ng-click="singleSLCtrl.deleteItem(item._id)" title="Posten löschen"><span class="glyphicon glyphicon-trash"></span></button>
+                                    <button class="btn btn-success" ng-click="singleSLCtrl.purchaseItem(item._id)" title="Posten kaufen"><span class="glyphicon glyphicon-usd"></span></button>
                                 </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <button ng-hide="singleSLCtrl.showNewItem" class="btn btn-primary addButton"
-                            ng-click="singleSLCtrl.enableAddingNewItem()"><i
-                            class="glyphicon glyphicon-plus"></i> Neuen Posten hinzufügen
+                    <button ng-hide="singleSLCtrl.showNewItem" class="btn btn-primary"
+                            ng-click="singleSLCtrl.enableAddingNewItem()"><span
+                            class="glyphicon glyphicon-plus"></span> Neuen Posten hinzufügen
                     </button>
                     <form class="form-inline new-form">
                         <div class="form-group" ng-show="singleSLCtrl.showNewItem">
@@ -61,7 +64,7 @@
                                        ng-model="singleSLCtrl.newItem.quantity">
 
                             </div>
-                            <div class="confirmButton">
+                            <div>
                                 <button class="btn btn-primary" ng-click="singleSLCtrl.addNewItem()">Posten hinzufügen
                                 </button>
                                 <button class="btn" ng-click="singleSLCtrl.cancelAddingNewItem()">Abbrechen</button>

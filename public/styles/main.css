@@ -1,5 +1,17 @@
 /* Custom CSS for WG Manager */
 
+
+/* form buttons */
+@media (max-width: 768px) {
+	.btn {
+		margin-bottom: 5px;
+	}
+}
+
+.item-form button[type=submit] {
+	margin-bottom: 5px;
+}
+
 /* xeditable forms responsive */
 .editable-wrap {
     display:block;
