@@ -6,7 +6,7 @@
     <div style="clear:both" class="row">
         <div class="col-xs-12 col-md-3">
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>WG Mitglieder</strong></div>
+                <div class="panel-heading"><strong translate="WG_MEMBERS"></strong></div>
                 <div class="panel-body">
                     <ul>
                         <li ng-repeat="member in singleWGCtrl.members track by $index">{{member.local.username}}</li>
@@ -16,13 +16,13 @@
         </div>
         <div class="col-xs-12 col-md-9">
             <div class="panel panel-primary">
-                <div class="panel-heading"><strong>Einkaufslisten</strong></div>
+                <div class="panel-heading"><strong translate="WG_SHOPPINGLISTS"></strong></div>
                 <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <thead>
-                            <th>Einkaufsliste</th>
-                            <th>Initiator</th>
-                            <th>Erstellt am</th>
+                            <th translate="WG_SHOPPINGLIST"></th>
+                            <th translate="INITIATOR"></th>
+                            <th translate="CREATED_AT"></th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -41,12 +41,12 @@
                                       class="form-inline" shown="inserted == sl._id">
                                     <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                                         <span
-                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs"> Speichern</span>
+                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs" translate="SAVE"></span>
                                     </button>
                                     <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
                                             class="btn btn-default">
                                             <span
-                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Abbrechen</span>
+                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs" translate="CANCEL"></span>
                                     </button>
                                 </form>
 
@@ -65,21 +65,20 @@
                     </table>
                     <button ng-hide="singleWGCtrl.showNewItem" class="btn btn-primary"
                             ng-click="singleWGCtrl.newItem()"><span
-                            class="glyphicon glyphicon-plus"></span> Neue Liste hinzufügen
+                            class="glyphicon glyphicon-plus"></span><span translate="WG_SHOPPINGLIST_ADD"></span>
                     </button>
                     <div class="new-form" ng-show="singleWGCtrl.showNewItem">
-                        <h4>Neue Einkaufsliste anlegen</h4>
+                        <h4 translate="WG_SHOPPINGLIST_ADD_TITLE"></h4>
 
                         <div class="input-group">
-                            <span class="input-group-addon">Name der Einkaufsliste</span>
+                            <span class="input-group-addon" translate="WG_SHOPPINGLIST_NAME"></span>
                             <input type="text" class="form-control" placeholder="Neue Liste"
                                    ng-model="singleWGCtrl.newShoppinglist.name">
                         </div>
                         <div>
-                            <button class="btn btn-primary" ng-click="singleWGCtrl.addNewShoppinglist()">Einkaufsliste
-                                hinzufügen
+                            <button class="btn btn-primary" ng-click="singleWGCtrl.addNewShoppinglist()" translate="WG_SHOPPINGLIST_ADD_CONFIRM">
                             </button>
-                            <button class="btn" ng-click="singleWGCtrl.cancelAddingNewShoppinglist()">Abbrechen</button>
+                            <button class="btn" ng-click="singleWGCtrl.cancelAddingNewShoppinglist()" translate="CANCEL"></button>
                         </div>
                     </div>
                 </div>

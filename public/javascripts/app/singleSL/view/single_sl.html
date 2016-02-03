@@ -8,38 +8,52 @@
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <div class="panel panel-primary">
-                <div class="panel-heading"><strong>Einkaufsliste</strong><span class="pull-right">{{singleSLCtrl.shoppinglist.date | date}}</span></div>
+                <div class="panel-heading"><strong translate="WG_SHOPPINGLIST"></strong><span class="pull-right">{{singleSLCtrl.shoppinglist.date | date}}</span>
+                </div>
                 <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <thead>
-                        <th>Posten</th>
-                        <th>Anzahl</th>
-                        <th>Hinzugefügt von</th>
+                        <th translate="WG_SHOPPINGLIST_ITEM"></th>
+                        <th translate="WG_SHOPPINGLIST_ITEM_QUANTITY"></th>
+                        <th translate="ADDED_BY"></th>
                         <th></th>
                         </thead>
                         <tbody>
                         <tr ng-repeat="item in singleSLCtrl.items" ng-if="!item.purchased">
-                            <td><span editable-text="item.name" e-name="name" e-form="rowform" e-required>{{item.name}}</span></td>
-                            <td><span editable-text="item.quantity" e-name="quantity" e-form="rowform" e-required>{{item.quantity}}</span></td>
-                            <td><span editable-text="item.addedby" e-form="rowform" e-readonly>{{item.addedby}}</span></td>
+                            <td><span editable-text="item.name" e-name="name" e-form="rowform"
+                                      e-required>{{item.name}}</span></td>
+                            <td><span editable-text="item.quantity" e-name="quantity" e-form="rowform" e-required>{{item.quantity}}</span>
+                            </td>
+                            <td><span editable-text="item.addedby" e-form="rowform" e-readonly>{{item.addedby}}</span>
+                            </td>
                             <td>
                                 <!-- form -->
-                                <form editable-form name="rowform" ng-show="rowform.$visible" class="item-form form-inline" shown="inserted == item._id" onbeforesave="singleSLCtrl.updateItem(item._id, $data)">
-                                  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                <form editable-form name="rowform" ng-show="rowform.$visible"
+                                      class="item-form form-inline" shown="inserted == item._id"
+                                      onbeforesave="singleSLCtrl.updateItem(item._id, $data)">
+                                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                                     <span
-                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs"> Speichern</span>
+                                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs"
+                                                                                        translate="SAVE"></span>
                                     </button>
-                                  </button>
-                                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                    </button>
+                                    <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
+                                            class="btn btn-default">
                                     <span
-                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Abbrechen</span>
-                                  </button>
+                                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs"
+                                                                                            translate="CANCEL"></span>
+                                    </button>
                                 </form>
-                        
+
                                 <div ng-show="!rowform.$visible">
-                                    <button class="btn btn-active" ng-click="rowform.$show()"><span class="glyphicon glyphicon-pencil" title="Posten bearbeiten"></span></button>
-                                    <button class="btn btn-danger" ng-click="singleSLCtrl.deleteItem(item._id)" title="Posten löschen"><span class="glyphicon glyphicon-trash"></span></button>
-                                    <button class="btn btn-success" ng-click="singleSLCtrl.purchaseItem(item._id)" title="Posten kaufen"><span class="glyphicon glyphicon-usd"></span></button>
+                                    <button class="btn btn-active" ng-click="rowform.$show()"><span
+                                            class="glyphicon glyphicon-pencil" title="Posten bearbeiten"></span>
+                                    </button>
+                                    <button class="btn btn-danger" ng-click="singleSLCtrl.deleteItem(item._id)"
+                                            title="Posten löschen"><span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    <button class="btn btn-success" ng-click="singleSLCtrl.purchaseItem(item._id)"
+                                            title="Posten kaufen"><span class="glyphicon glyphicon-usd"></span></button>
                                 </div>
                             </td>
                         </tr>
@@ -47,27 +61,29 @@
                     </table>
                     <button ng-hide="singleSLCtrl.showNewItem" class="btn btn-primary"
                             ng-click="singleSLCtrl.enableAddingNewItem()"><span
-                            class="glyphicon glyphicon-plus"></span> Neuen Posten hinzufügen
+                            class="glyphicon glyphicon-plus"></span><span translate="WG_SHOPPINGLIST_ITEM_ADD"></span>
                     </button>
                     <form class="form-inline new-form">
                         <div class="form-group" ng-show="singleSLCtrl.showNewItem">
-                            <h4>Neuen Posten anlegen</h4>
+                            <h4 translate="WG_SHOPPINGLIST_ITEM_ADD_TITLE"></h4>
 
                             <div class="input-group">
-                                <span class="input-group-addon">Posten</span>
+                                <span class="input-group-addon" translate="WG_SHOPPINGLIST_ITEM"></span>
                                 <input type="text" class="form-control" placeholder="Neuer Posten"
                                        ng-model="singleSLCtrl.newItem.name">
                             </div>
                             <div class="input-group">
-                                <span class="input-group-addon">Anzahl</span>
+                                <span class="input-group-addon" translate="WG_SHOPPINGLIST_ITEM_QUANTITY"></span>
                                 <input type="number" class="form-control" ng-init="singleSLCtrl.newItem.quantity=1"
                                        ng-model="singleSLCtrl.newItem.quantity">
 
                             </div>
                             <div>
-                                <button class="btn btn-primary" ng-click="singleSLCtrl.addNewItem()">Posten hinzufügen
+                                <button class="btn btn-primary" ng-click="singleSLCtrl.addNewItem()"
+                                        translate="WG_SHOPPINGLIST_ITEM_ADD_CONFIRM">
                                 </button>
-                                <button class="btn" ng-click="singleSLCtrl.cancelAddingNewItem()">Abbrechen</button>
+                                <button class="btn" ng-click="singleSLCtrl.cancelAddingNewItem()"
+                                        translate="CANCEL"></button>
                             </div>
                         </div>
                     </form>
@@ -76,14 +92,14 @@
         </div>
         <div class="col-xs-12 col-md-6">
             <div class="panel panel-success">
-                <div class="panel-heading"><strong>Bereits gekaufte Posten</strong></div>
+                <div class="panel-heading"><strong translate="WG_SHOPPINGLIST_ITEMS_PURCHASED"></strong></div>
                 <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <thead>
-                        <th>Posten</th>
-                        <th>Anzahl</th>
-                        <th>Hinzugefügt von</th>
-                        <th>gekauft von</th>
+                        <th translate="WG_SHOPPINGLIST_ITEM"></th>
+                        <th translate="WG_SHOPPINGLIST_ITEM_QUANTITY"></th>
+                        <th translate="ADDED_BY"></th>
+                        <th translate="PURCHASED_BY"></th>
                         </thead>
                         <tbody>
                         <tr ng-repeat="item in singleSLCtrl.items" ng-if="item.purchased">
@@ -97,3 +113,5 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
