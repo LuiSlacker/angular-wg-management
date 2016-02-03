@@ -1,0 +1,59 @@
+{
+  "APP_TITLE":      "WG-Manager",
+
+  "LOGIN_TITLE":  "Login",
+  "LOGIN_REGISTER":  "Register",
+  "LOGIN_USERNAME":  "Username",
+  "LOGIN_PASSWORD":  "Password",
+  "LOGIN_LOGIN":  "Login",
+  "LOGIN_SIGNUP":  "Signup",
+
+  "NAV_TITLE":  "WG-Manager",
+  "NAV_ALL_WGS":"All flats",
+  "NAV_MY_PROFILE":"My Profile",
+  "NAV_ABOUT":     "About",
+  "NAV_DOCU":     "Documentation",
+  "NAV_IMP":     "Impressum",
+  "NAV_GITHUB":     "Fork Project on GitHub",
+  "NAV_LOGOUT":     "Logout",
+
+  "WGS_ALL": "All flats",
+  "WGS_WG": "WG",
+  "WGS_NAME": "WG name",
+  "WGS_STREET": "Street",
+  "WGS_CITY": "City",
+  "WGS_ADD": " Add new WG",
+  "WGS_ADD_CONFIRM": "add WG",
+  "WGS_ADD": "Add new WG",
+
+
+  "WG_MEMBERS": "WG members",
+  "WG_SHOPPINGLIST_NAME": "Shoppinglistname",
+  "WG_SHOPPINGLIST": "Shoppinglist",
+  "WG_SHOPPINGLISTS": "Shoppinglists",
+  "WG_SHOPPINGLIST_ADD": "Add New Shoppinglist",
+  "WG_SHOPPINGLIST_ADD_TITLE": "Create New Shoppinglist",
+  "WG_SHOPPINGLIST_ADD_CONFIRM": "Liste hinzufügen",
+
+  "WG_SHOPPINGLIST_ITEM": "Item",
+  "WG_SHOPPINGLIST_ITEM_QUANTITY": "Quantity",
+  "WG_SHOPPINGLIST_ITEMS_PURCHASED": "Items already purchased",
+  "WG_SHOPPINGLIST_ITEM_ADD": "Add New Item",
+  "WG_SHOPPINGLIST_ITEM_ADD_TITLE": "Create New Item",
+  "WG_SHOPPINGLIST_ITEM_ADD_CONFIRM": "Add Item",
+
+  "PROFILE_TITLE": "Edit Profile Information",
+  "PROFILE_PWD_HIDDEN": "hidden",
+
+  "CANCEL": " Cancel",
+  "SAVE": " Save",
+  "EDIT": "Edit",
+  "INITIATOR": "Initiator",
+  "CREATED_AT": "Created at",
+  "ADDED_AT": "Added at",
+  "ADDED_BY": "Added by",
+  "PURCHASED_BY": "Purchased by",
+
+  "CHAT_OPEN": "Open Chat",
+  "CHAT_CLOSE": "Close Chat"
+}
