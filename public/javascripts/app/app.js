@@ -7,16 +7,18 @@
  * @name app
  * @description main module
  */
-var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
+var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable', 'pascalprecht.translate'])
 
     .config([
         '$urlRouterProvider',
         '$stateProvider',
         '$controllerProvider',
-        '$provide', function ($urlRouterProvider,
+        '$provide',
+        '$translateProvider', function ($urlRouterProvider,
                               $stateProvider,
                               $controllerProvider,
-                              $provide) {
+                              $provide,
+                              $translateProvider) {
 
             app.controller = $controllerProvider.register;
             app.factory = $provide.factory;
@@ -38,7 +40,14 @@ var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
                 .state('app', {
                     url: '/app',
                     templateUrl: 'public/javascripts/app/main/view/app.html',
-                    abstract:true
+                    abstract:true,
+                    resolve: {
+                        deps: ['uiLoad', function (uiLoad) {
+                            return uiLoad.load(
+                                'public/javascripts/app/main/controller/translate-controller.js');
+                        }]
+                    }
+
                 })
                 .state('app.wgs', {
                     url: '/wgs',
@@ -100,7 +109,13 @@ var app = angular.module("app", ['ui.router', 'ui.load', 'xeditable'])
                 .state('docs', {
                     url: '/docs',
                     templateUrl: 'public/docs/index.html'
-                })
+                });
+            $translateProvider.useStaticFilesLoader({
+                prefix: 'lang-',
+                suffix: '.json'
+            });
+
+            $translateProvider.preferredLanguage('de_DE');
         }])
 
    .run(['$rootScope', '$location', 'authService', 'utils',function($rootScope, $location, authService, utils){

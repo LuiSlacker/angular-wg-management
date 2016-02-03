@@ -2,44 +2,38 @@
     <h3>{{profileCtrl.name}}</h3>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Profilinformationen ändern</div>
+        <div class="panel-heading" translate="PROFILE_TITLE"></div>
         <div class="panel-body">
             <form editable-form name="editableForm" onaftersave="profileCtrl.updateUser()">
                 <!-- editable username -->
-                <label class="col-xs-12">Benutzername</label>
+                <label class="col-xs-12" translate="LOGIN_USERNAME"></label>
                 <span class="col-xs-3" editable-text="profileCtrl.user.local.username" e-required>{{profileCtrl.user.local.username}}</span>
                 <!-- button to show form -->
                 <button type="button" class="btn btn-default" ng-click="editableForm.$show()"
-                        ng-show="!editableForm.$visible">
-                    Ändern
+                        ng-show="!editableForm.$visible" translate="EDIT">
                 </button>
                 <span ng-show="editableForm.$visible">
-                    <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
-                        Speichern
+                    <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting" translate="SAVE">
                     </button>
                     <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting"
-                            ng-click="editableForm.$cancel()">
-                        Abbrechen
+                            ng-click="editableForm.$cancel()" translate="CANCEL">
                     </button>
                   </span>
             </form>
 
             <form editable-form name="editableForm2" onaftersave="profileCtrl.updateUser()">
                 <!-- editable password -->
-                <label class="col-xs-12">Passwort</label>
-                <span class="col-xs-3" editable-text="profileCtrl.user.local.password" e-type="password" e-required><em>hidden</em></span>
+                <label class="col-xs-12" translate="LOGIN_PASSWORD"></label>
+                <span class="col-xs-3" editable-text="profileCtrl.user.local.password" e-type="password" e-required><em translate="PROFILE_PWD_HIDDEN"></em></span>
                <!-- button to show form -->
                 <button type="button" class="btn btn-default" ng-click="editableForm2.$show()"
-                        ng-show="!editableForm2.$visible">
-                    Ändern
+                        ng-show="!editableForm2.$visible" translate="EDIT">
                 </button>
                 <span ng-show="editableForm2.$visible">
-                    <button type="submit" class="btn btn-primary" ng-disabled="editableForm2.$waiting">
-                        Speichern
+                    <button type="submit" class="btn btn-primary" ng-disabled="editableForm2.$waiting" translate="SAVE">
                     </button>
                     <button type="button" class="btn btn-default" ng-disabled="editableForm2.$waiting"
-                            ng-click="editableForm2.$cancel()">
-                        Abbrechen
+                            ng-click="editableForm2.$cancel()" translate="CANCEL">
                     </button>
                   </span>
             </form>

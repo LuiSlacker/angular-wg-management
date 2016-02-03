@@ -8,38 +8,43 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" ui-sref="app.wgs">WG-Verwaltung</a>
+            <a class="navbar-brand" href="#" ui-sref="app.wgs" translate="NAV_TITLE"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a ui-sref="app.wgs">Alle WGs</a></li>
-                <li><a ui-sref="app.profile">Mein Profil</a></li>
+                <li><a ui-sref="app.wgs" translate="NAV_ALL_WGS"></a></li>
+                <li><a ui-sref="app.profile" translate="NAV_MY_PROFILE"></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Über <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <!--<li class="dropdown-header">Über</li>-->
-                        <li><a href="public/docs">Dokumentation</a></li>
-                        <li><a ui-sref="app.impressum">Impressum</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="https://github.com/LuiSlacker/angular-wg-management" target="_blank">Fork project auf Github</a></li>
+                <li class="dropdown" ng-controller="translateController">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{language}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="min-width:1px!important">
+                        <li><a href="" ng-click="changeLanguage('de_DE')"><img src="public/images/germany.png" alt="DE"/></a></li>
+                        <li><a href="" ng-click="changeLanguage('en_US')"><img src="public/images/uk.png" alt="ENG"/></a></li>
                     </ul>
                 </li>
-                <li><a ui-sref="login">Logout</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span translate="NAV_ABOUT"></span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="public/docs" translate="NAV_DOCU"></a></li>
+                        <li><a ui-sref="app.impressum" translate="NAV_IMP"></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="https://github.com/LuiSlacker/angular-wg-management" target="_blank" translate="NAV_GITHUB"></a></li>
+                    </ul>
+                </li>
+                <li><a ui-sref="login" translate="NAV_LOGOUT"></a></li>
             </ul>
 
         </div>
-    <!--</div>-->
 </nav>
 
 <div ui-view></div>
 
 <div class="chat-box" ng-controller="ChatController">
     <input type="checkbox" />
-    <label data-expanded="Close Chat" data-collapsed="Open Chat"></label>
+    <label data-expanded="{{ 'CHAT_CLOSE' | translate }}" data-collapsed="{{ 'CHAT_OPEN' | translate }}"></label>
 
     <div class="chat-box-content">
         <div class="{{message.class}}" ng-repeat="message in messages track by $index">{{message.msg}}</div>
@@ -49,9 +54,3 @@
         </div>
     </div>
 </div>
-
-<!--<footer class="footer">
-    <div class="container">
-        <p class="text-muted">© 2016 Katia, Ludwig @ HTW Berlin</p>
-    </div>
-</footer>-->

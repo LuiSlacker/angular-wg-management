@@ -1,13 +1,13 @@
 <div ng-controller="allWGsController as allWGsCtrl" class="row">
-    <h3>Alle WGs</h3>
+    <h3 translate="APP_TITLE"></h3>
     <div class="panel panel-primary">
         <div class="panel-heading"><strong>WGs</strong></div>
         <div class="panel-body">
             <table class="table table-striped table-hover">
                 <thead>
-                    <th>WG</th>
-                    <th>Straße</th>
-                    <th>Stadt</th>
+                    <th translate="WGS_WG"></th>
+                    <th translate="WGS_STREET"></th>
+                    <th translate="WGS_CITY"></th>
                     <th></th>
                 </thead>
                 <tbody>
@@ -26,12 +26,12 @@
                         <form editable-form name="rowform" onbeforesave="allWGsCtrl.updateWG(wg._id, $data)" ng-show="rowform.$visible" class="form-inline" shown="inserted == wg._id">
                           <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                             <span
-                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs"> Speichern</span>
+                            class="glyphicon glyphicon-ok"></span><span class="hidden-xs" translate="SAVE"></span>
                                     </button>
                           </button>
                           <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
                             <span
-                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs"> Abbrechen</span>
+                            class="glyphicon glyphicon-remove"></span><span class="hidden-xs" translate="CANCEL"></span>
                           </button>
                         </form>
                 
@@ -45,29 +45,29 @@
                 </tbody>
             </table>
             <button ng-hide="allWGsCtrl.showNewItem" class="btn btn-primary" ng-click="allWGsCtrl.newItem()">
-                <span class="glyphicon glyphicon-plus"></span> Neue WG hinzufügen
+                <span class="glyphicon glyphicon-plus"></span><span translate="WGS_ADD"></span>
             </button>
             <form class="form-inline new-form">
                 <div class="form-group" ng-show="allWGsCtrl.showNewItem">
-                    <h4>Neue WG anlegen</h4>
+                    <h4 translate="WGS_ADD"></h4>
 
                     <div class="input-group">
-                        <span class="input-group-addon">WG-Name</span>
+                        <span class="input-group-addon" translate="WGS_NAME"></span>
                         <input type="text" class="form-control" placeholder="Im Fernsehturm"
                                ng-model="allWGsCtrl.newWG.name">
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon">Straße</span>
+                        <span class="input-group-addon" translate="WGS_STREET"></span>
                         <input type="text" class="form-control" placeholder="Alexanderplatz"
                                ng-model="allWGsCtrl.newWG.street">
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon">Stadt</span>
+                        <span class="input-group-addon" translate="WGS_CITY"></span>
                         <input type="text" class="form-control" placeholder="Berlin" ng-model="allWGsCtrl.newWG.city">
                     </div>
                     <div>
-                        <button class="btn btn-primary" ng-click="allWGsCtrl.addNewWG()">WG hinzufügen</button>
-                        <button class="btn" ng-click="allWGsCtrl.cancelAddingNewWG()">Abbrechen</button>
+                        <button class="btn btn-primary" ng-click="allWGsCtrl.addNewWG()" translate="WGS_ADD_CONFIRM"></button>
+                        <button class="btn" ng-click="allWGsCtrl.cancelAddingNewWG()" translate="CANCEL"></button>
                     </div>
                 </div>
             </form>
